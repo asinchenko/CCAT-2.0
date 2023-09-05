@@ -4,13 +4,13 @@ Using keyboard-interactive authentication.
 Password: 
 CC
 **********************************************************
-*                Welcome to the SW 2Floor-6              *
+*                Welcome to the SW base6              *
 *                     Location: Senat                    *
 **********************************************************
 
-2Floor6>en
+base6>en
 Password: 
-2Floor6#showr  run
+base6#showr  run
 Building configuration...
 
 Current configuration : 10789 bytes
@@ -23,7 +23,7 @@ service timestamps debug datetime localtime
 service timestamps log datetime localtime
 service password-encryption
 !
-hostname 2Floor6
+hostname base6
 !
 boot-start-marker
 boot-end-marker
@@ -507,7 +507,7 @@ ntp clock-period 36028941
 ntp server x.x.x.x prefer
 end
 
-2Floor6#                 show spanning-t            version
+base6#                 show spanning-t            version
 Cisco IOS Software, C3560 Software (C3560-IPBASEK9-M), Version 12.2(50)SE5, RELEASE SOFTWARE (fc1)
 Technical Support: http://www.cisco.com/techsupport
 Copyright (c) 1986-2010 by Cisco Systems, Inc.
@@ -517,7 +517,7 @@ Image text-base: 0x01000000, data-base: 0x02900000
 ROM: Bootstrap program is C3560 boot loader
 BOOTLDR: C3560 Boot Loader (C3560-HBOOT-M) Version 12.2(53r)SEY4, RELEASE SOFTWARE (fc1)
 
-2Floor6 uptime is 2 weeks, 5 days, 3 hours, 12 minutes
+base6 uptime is 2 weeks, 5 days, 3 hours, 12 minutes
 System returned to ROM by power-on
 System restarted at 08:54:49 Astana Wed Sep 21 2022
 System image file is "flash:/c3560-ipbasek9-mz.122-50.SE5/c3560-ipbasek9-mz.122-50.SE5.bin"
@@ -570,4 +570,4 @@ Switch Ports Model              SW Version            SW Image
 
 Configuration register is 0xF
 
-2Floor6#  
+base6#  

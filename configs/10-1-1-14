@@ -1,22 +1,22 @@
-=~=~=~=~=~=~=~=~=~=~=~= PuTTY log 2022.10.10 12:05:59 =~=~=~=~=~=~=~=~=~=~=~=
+=~=~=~=~=~=~=~=~=~=~=~= PuTTY log 2022.10.10 12:21:18 =~=~=~=~=~=~=~=~=~=~=~=
 login as: cisco
 Using keyboard-interactive authentication.
 Password: 
-C
-**********************************************************
-*               Welcome to the SW 2Floor-5               *
-*                     Location: Senat                    *
-**********************************************************
+CC
+!**********************************************************!
+!                Welcome to the SW base034               !
+!                Location:Mazilis                          !
+!**********************************************************!
 
-2Floor5>en
+base014>ci  en
 Password: 
-2Floor5#sow  hj ow run
+base014#show run
 Building configuration...
 
-Current configuration : 19753 bytes
+Current configuration : 20393 bytes
 !
-! Last configuration change at 13:02:20 Astana Tue Sep 6 2022 by cisco
-! NVRAM config last updated at 12:45:51 Astana Tue Aug 23 2022 by cisco
+! Last configuration change at 09:57:09 Astana Thu Sep 8 2022 by cisco
+! NVRAM config last updated at 09:57:20 Astana Thu Sep 8 2022 by cisco
 !
 version 12.2
 no service pad
@@ -24,20 +24,18 @@ service timestamps debug datetime localtime
 service timestamps log datetime localtime
 service password-encryption
 !
-hostname 2Floor5
+hostname base014
 !
 boot-start-marker
 boot-end-marker
 !
-enable secret 5 $1$GL7X$5p0rR.eV3Z1Au5amZwbqS0
+enable secret 5 $1$YOyc$21u6y1pap5Rg9VFcAwGfS.
 !
-username cisco privilege 15 secret 5 $1$vrzf$x68QUndT.7u5syvvN8iaV.
+username cisco privilege 15 secret 5 $1$KhWM$R4vLVoIMewgK5mX9Wi3gT/
 aaa new-model
 !
 !
- --More--         aaa authentication login default local
-aaa accounting system default stop-only group tacacs+
-!
+ --More--         !
 !
 !
 aaa session-id common
@@ -48,48 +46,45 @@ ip domain-name parlam.kz
 ip name-server x.x.x.x
 !
 !
-login on-failure log
-login on-success log
 !
 !
-crypto pki trustpoint TP-self-signed-2184791296
+crypto pki trustpoint TP-self-signed-2185048960
  enrollment selfsigned
- subject-name cn=IOS-Self-Signed-Certificate-2184791296
+ subject-name cn=IOS-Self-Signed-Certificate-2185048960
  revocation-check none
- rsakeypair TP-self-signed-2184791296
+ rsakeypair TP-self-signed-2185048960
 !
- --More--         !
-crypto pki certificate chain TP-self-signed-2184791296
+!
+crypto pki certificate chain TP-self-signed-2185048960
  certificate self-signed 01
-  30820249 308201B2 A0030201 02020101 300D0609 2A864886 F70D0101 04050030 
-  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274 
-  69666963 6174652D 32313834 37393132 3936301E 170D3933 30333031 30303130 
-  30325A17 0D323030 31303130 30303030 305A3031 312F302D 06035504 03132649 
-  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D32 31383437 
-  39313239 3630819F 300D0609 2A864886 F70D0101 01050003 818D0030 81890281 
-  8100A4FE 55718B1C 20E13709 A970950D 0312448D 513C0B8F FBA1DF0B 61B0687C 
-  3C38E4C5 F77CDC30 7E8E624D 35F1CC86 063AA093 323C0278 D77148A9 F80EDF3E 
-  75FAE173 3A5C2F46 4C73E3D2 7FD85261 FC51C0B9 144D5106 C8107016 DFDECFB0 
-  97C61D0D F3D0CC49 854FC926 4268C055 4C16DFB4 8CC9011E B9923616 C87A7167 
-  F6150203 010001A3 71306F30 0F060355 1D130101 FF040530 030101FF 301C0603 
-  551D1104 15301382 1132466C 6F6F7235 2E706172 6C616D2E 6B7A301F 0603551D 
-  23041830 16801489 7E267DC8 EC358501 BFB5D064 3793E844 EECB5430 1D060355 
-  1D0E0416 0414897E 267DC8EC 358501BF B5D06437 93E844EE CB54300D 06092A86 
-  4886F70D 01010405 00038181 0088AE89 688176D4 3AE62BE3 1BD070BA 27FA94B1 
-  11D2DA8A 82960722 5044E8AE 0E844C3D 9D41BC8C 92DDD839 05C78C93 9C335D3F 
-  6EDBF3C4 CEEFDE46 32073237 11B75AF8 E7E0C859 5B02FACC 4F62B24D 8F60B59B 
-  166FAC5D 393B7902 3CB017F7 76A940CC 8B1E14A7 5B115645 A974DCCD E27E8AAE 
-  115BD3A6 A886EE87 6654C4E8 88
+  3082024A 308201B3 A0030201 02020101 300D0609 2A864886 F70D0101 04050030 
+ --More--           31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 32313835 30343839 3630301E 170D3135 31323033 30393539 
+  35325A17 0D323030 31303130 30303030 305A3031 312F302D 06035504 03132649 
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D32 31383530 
+  34383936 3030819F 300D0609 2A864886 F70D0101 01050003 818D0030 81890281 
+  8100F738 3B8FC2A7 5FA29891 05F476DA 6FED0E2A 071AA150 2256C64D E2CF09C4 
+  1BA75DA1 9AFAC9EF DC9BD013 2EA46089 3FB04DB7 9DFFFB8A 869562A0 C101AD1E 
+  E7D95F74 9E4B1047 A10E5012 83CA68FA 4D49BB01 FD519DC0 79FEE8B7 EB45E97E 
+  5F17FB33 592A3496 3F7F89A6 87AF7FB8 90AF2D3B CBA4866C B89C851D 6711D53E 
+  F0350203 010001A3 72307030 0F060355 1D130101 FF040530 030101FF 301D0603 
+  551D1104 16301482 1234466C 6F6F7231 342E7061 726C616D 2E6B7A30 1F060355 
+  1D230418 30168014 AA87C8DD 9E124007 1DDF1C8F B0702F5C 2740CFE7 301D0603 
+  551D0E04 160414AA 87C8DD9E 1240071D DF1C8FB0 702F5C27 40CFE730 0D06092A 
+  864886F7 0D010104 05000381 8100D34E 15E74FCE 4FCB72FE A761F97B 2D9BD7E5 
+  8194D139 E27BD349 D963BF33 DFC67A0A 482223BE 35F370A0 85F30FD0 319ADF2A 
+  207521D8 3B88B2AB 76443FE8 9A9E326A A451C4EF 1462F139 2706AFAC 27306DC4 
+  4A0AABA9 1F8AB105 4C4C4106 A24CF8D0 056839E5 224B38A3 B9291387 80DCE418 
+  2063A487 A733726F 0C7F5861 D46F
   quit
+!
+!
+!
+!
  --More--         !
-!
-!
-!
-!
 archive
  log config
   logging enable
-  logging size 200
   notify syslog contenttype plaintext
   hidekeys
  path ftp://x.x.x.x/$h-$t
@@ -100,105 +95,97 @@ spanning-tree extend system-id
 vlan internal allocation policy ascending
 !
 ip ftp username ftp-user
-ip ftp password 7 00341215174C5B140B
-ip ssh logging events
+ip ftp password 7 03345A181518715E4A
 ip ssh version 2
 ip rcmd rcp-enable
- --More--         ip rcmd remote-host cwuser x.x.x.x cwuser enable
+ip rcmd remote-host cwuser x.x.x.x cwuser enable
 !
 !
 interface FastEthernet0/1
- description 1 floor Priem grazhdan
- switchport access vlan 2
+ switchport access vlan 3
  switchport mode access
- switchport port-security maximum 2
+ --More--          switchport port-security maximum 2
  switchport port-security
  switchport port-security violation restrict
  switchport port-security mac-address sticky
  power inline never
- duplex full
  spanning-tree portfast
 !
 interface FastEthernet0/2
- switchport access vlan 2
+ switchport access vlan 3
  switchport mode access
  switchport port-security maximum 2
  switchport port-security
  switchport port-security violation restrict
  switchport port-security mac-address sticky
- switchport port-security mac-address sticky 0024.811b.66d6
- --More--          switchport port-security mac-address sticky 9c8e.99d0.7e7b
  power inline never
- duplex full
  spanning-tree portfast
 !
 interface FastEthernet0/3
- switchport access vlan 4
+ switchport access vlan 3
  switchport mode access
  switchport port-security maximum 2
  switchport port-security
  switchport port-security violation restrict
- switchport port-security mac-address sticky
- switchport port-security mac-address sticky 9c8e.99d0.6dce
- switchport port-security mac-address sticky 9c8e.99d0.7575
+ --More--          switchport port-security mac-address sticky
+ switchport port-security mac-address sticky 3cd9.2ba4.808c
  power inline never
  spanning-tree portfast
 !
 interface FastEthernet0/4
- description Stenograf_set
+ description Zal-A312
  switchport access vlan 73
  switchport mode access
- switchport port-security maximum 5
+ switchport port-security maximum 6
+ switchport port-security
+ switchport port-security violation restrict
  switchport port-security mac-address sticky
- --More--          switchport port-security mac-address sticky 000f.fe7c.235f
- switchport port-security mac-address sticky 2c27.d720.c39c
- switchport port-security mac-address sticky a0b3.cc1e.758e
- switchport port-security mac-address sticky d0c2.8239.1988
- switchport port-security mac-address sticky d45d.64f0.5115
+ switchport port-security mac-address sticky 1860.248e.7c56
+ switchport port-security mac-address sticky 1860.2498.e572
+ switchport port-security mac-address sticky 1860.2498.e618
+ switchport port-security mac-address sticky 1860.2498.e63a
+ switchport port-security mac-address sticky 1860.2498.e651
  power inline never
  spanning-tree portfast
 !
 interface FastEthernet0/5
- description 109kab
- switchport access vlan 2
+ description A310
+ --More--          switchport access vlan 4
  switchport mode access
  switchport port-security maximum 2
  switchport port-security
  switchport port-security violation restrict
  switchport port-security mac-address sticky
+ switchport port-security mac-address sticky 9c8e.99d0.7599
  power inline never
  spanning-tree portfast
 !
 interface FastEthernet0/6
- description kab210
- switchport access vlan 2
- switchport mode access
- --More--          switchport port-security maximum 7
- switchport port-security
- switchport port-security violation restrict
- switchport port-security mac-address sticky
- switchport port-security mac-address sticky 000f.fe7c.235f
- switchport port-security mac-address sticky 4ced.fb6b.4938
- switchport port-security mac-address sticky 9c8e.99d0.487b
- switchport port-security mac-address sticky 9c8e.99d0.71b5
- switchport port-security mac-address sticky 9c8e.99d0.758f
- switchport port-security mac-address sticky d0c2.8239.1988
- switchport port-security mac-address sticky f4ce.46f3.6b82
- power inline never
- spanning-tree portfast
-!
-interface FastEthernet0/7
- switchport access vlan 2
+ description FARID OPERATORSKAYA
+ switchport access vlan 3
  switchport mode access
  switchport port-security maximum 2
  switchport port-security
  switchport port-security violation restrict
  switchport port-security mac-address sticky
+ switchport port-security mac-address sticky 9c8e.99d0.6ddb
  power inline never
  spanning-tree portfast
- --More--         !
+!
+interface FastEthernet0/7
+ --More--          description kab-404
+ switchport access vlan 3
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ switchport port-security mac-address sticky 9c8e.99d0.7549
+ power inline never
+ spanning-tree portfast
+!
 interface FastEthernet0/8
- switchport access vlan 2
+ switchport access vlan 3
  switchport mode access
  switchport port-security maximum 2
  switchport port-security
@@ -209,17 +196,7 @@ interface FastEthernet0/8
  spanning-tree portfast
 !
 interface FastEthernet0/9
- switchport access vlan 2
- switchport mode access
- switchport port-security maximum 2
- switchport port-security
- switchport port-security violation restrict
- switchport port-security mac-address sticky
- power inline never
- spanning-tree portfast
-!
-interface FastEthernet0/10
- --More--          switchport access vlan 2
+ --More--          switchport access vlan 3
  switchport mode access
  switchport port-security maximum 2
  switchport port-security
@@ -229,95 +206,121 @@ interface FastEthernet0/10
  power inline never
  spanning-tree portfast
 !
-interface FastEthernet0/11
- switchport access vlan 2
+interface FastEthernet0/10
+ switchport access vlan 3
  switchport mode access
  switchport port-security maximum 2
  switchport port-security
  switchport port-security violation restrict
  switchport port-security mac-address sticky
+ switchport port-security mac-address sticky 9c8e.99d0.7693
+ switchport port-security mac-address sticky f4cf.e2d4.8f00
+ power inline never
+ spanning-tree portfast
+!
+interface FastEthernet0/11
+ --More--          description Pohil
+ switchport access vlan 3
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ switchport port-security mac-address sticky 9c8e.99d0.71c5
  power inline never
  spanning-tree portfast
 !
 interface FastEthernet0/12
- description Buro_Pr_DAZ
- switchport access vlan 2
- --More--          switchport mode access
- switchport port-security maximum 2
- switchport port-security
- switchport port-security violation restrict
- switchport port-security mac-address sticky
- switchport port-security mac-address sticky c8d9.d21c.1f8a
- power inline never
- spanning-tree portfast
-!
-interface FastEthernet0/13
- switchport access vlan 2
+ switchport access vlan 3
  switchport mode access
  switchport port-security maximum 2
  switchport port-security
  switchport port-security violation restrict
  switchport port-security mac-address sticky
+ switchport port-security mac-address sticky 9c8e.99d0.7199
+ power inline never
+ spanning-tree portfast
+!
+interface FastEthernet0/13
+ --More--          description EKS-Bazarov
+ switchport access vlan 33
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ switchport port-security mac-address sticky 0013.20e8.12cc
+ switchport port-security mac-address sticky 2c27.d720.c3ac
  power inline never
  spanning-tree portfast
 !
 interface FastEthernet0/14
- switchport access vlan 2
+ description DAZ-EKS-Shumskaya
+ switchport access vlan 33
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ switchport port-security mac-address sticky 2cfd.a170.0ebd
+ power inline never
+ spanning-tree portfast
+ --More--         !
+interface FastEthernet0/15
+ description DAZ-EKS-Spirin
+ switchport access vlan 33
+ switchport mode access
+ switchport port-security maximum 6
+ switchport port-security
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ switchport port-security mac-address sticky 0002.1711.2710
+ switchport port-security mac-address sticky 0003.0c11.050a
+ switchport port-security mac-address sticky 0013.7277.6e49
+ switchport port-security mac-address sticky 2cfd.a170.19cb
+ switchport port-security mac-address sticky 74d4.3533.979b
+ switchport port-security mac-address sticky 9c8e.99d0.7229
+ power inline never
+ spanning-tree portfast
+!
+interface FastEthernet0/16
+ description kab-408
+ switchport access vlan 5
  switchport mode access
  switchport port-security maximum 2
  --More--          switchport port-security
  switchport port-security violation restrict
  switchport port-security mac-address sticky
- shutdown
- power inline never
- spanning-tree portfast
-!
-interface FastEthernet0/15
- switchport access vlan 2
- switchport mode access
- switchport port-security maximum 2
- switchport port-security
- switchport port-security violation restrict
- switchport port-security mac-address sticky
- shutdown
- power inline never
- spanning-tree portfast
-!
-interface FastEthernet0/16
- switchport access vlan 2
- switchport mode access
- switchport port-security maximum 2
- switchport port-security
- --More--          switchport port-security violation restrict
- switchport port-security mac-address sticky
- shutdown
+ switchport port-security mac-address sticky 9c8e.99d0.71a6
  power inline never
  spanning-tree portfast
 !
 interface FastEthernet0/17
- switchport access vlan 2
+ description DAZ-EKS-Munashev
+ switchport access vlan 33
  switchport mode access
  switchport port-security maximum 2
  switchport port-security
  switchport port-security violation restrict
  switchport port-security mac-address sticky
- shutdown
+ switchport port-security mac-address sticky 7071.bc9d.f6ec
  power inline never
  spanning-tree portfast
 !
 interface FastEthernet0/18
- description kab210
- switchport access vlan 2
+ description zal-conference
+ switchport access vlan 3
  switchport mode access
- switchport port-security maximum 2
+ --More--          switchport port-security maximum 2
  switchport port-security
- --More--          switchport port-security violation restrict
+ switchport port-security violation restrict
  switchport port-security mac-address sticky
+ switchport port-security mac-address sticky 2c41.3862.f142
  power inline never
  spanning-tree portfast
 !
 interface FastEthernet0/19
- switchport access vlan 2
+ switchport access vlan 3
  switchport mode access
  switchport port-security maximum 2
  switchport port-security
@@ -328,13 +331,12 @@ interface FastEthernet0/19
  spanning-tree portfast
 !
 interface FastEthernet0/20
- switchport access vlan 2
+ switchport access vlan 3
  switchport mode access
  switchport port-security maximum 2
- switchport port-security
+ --More--          switchport port-security
  switchport port-security violation restrict
  switchport port-security mac-address sticky
- --More--          shutdown
  power inline never
  spanning-tree portfast
 !
@@ -345,118 +347,109 @@ interface FastEthernet0/21
  switchport port-security
  switchport port-security violation restrict
  switchport port-security mac-address sticky
- switchport port-security mac-address sticky 9c8e.99d0.7221
- switchport port-security mac-address sticky 9c8e.99d0.8377
  power inline never
  spanning-tree portfast
 !
 interface FastEthernet0/22
- description Ayupova kab-129
- switchport access vlan 4
+ switchport access vlan 3
  switchport mode access
  switchport port-security maximum 2
  switchport port-security
  switchport port-security violation restrict
- --More--          switchport port-security mac-address sticky
- switchport port-security mac-address sticky 9c8e.99d0.7221
- switchport port-security mac-address sticky 9c8e.99d0.7550
- power inline never
+ switchport port-security mac-address sticky
+ --More--          power inline never
  spanning-tree portfast
 !
 interface FastEthernet0/23
- description 04
  switchport access vlan 33
  switchport mode access
  switchport port-security maximum 2
  switchport port-security
  switchport port-security violation restrict
  switchport port-security mac-address sticky
+ switchport port-security mac-address sticky 0025.b371.4df6
+ switchport port-security mac-address sticky 1831.bfca.cd88
  power inline never
  spanning-tree portfast
 !
 interface FastEthernet0/24
- switchport access vlan 2
+ switchport access vlan 3
  switchport mode access
  switchport port-security maximum 2
  switchport port-security
  switchport port-security violation restrict
- --More--          switchport port-security mac-address sticky
- shutdown
- power inline never
+ switchport port-security mac-address sticky
+ switchport port-security mac-address sticky 9c8e.99d0.7e35
+ --More--          power inline never
  spanning-tree portfast
 !
 interface FastEthernet0/25
- description nout_TV
- switchport access vlan 2
+ description hub seeshat
+ switchport access vlan 73
  switchport mode access
  switchport port-security maximum 4
  switchport port-security
  switchport port-security violation restrict
  switchport port-security mac-address sticky
- switchport port-security mac-address sticky 9c8e.99d0.6db0
- switchport port-security mac-address sticky c465.16b8.1cb9
+ switchport port-security mac-address sticky 1860.248e.7c01
+ switchport port-security mac-address sticky 9c8e.99d0.761a
  power inline never
  spanning-tree portfast
 !
 interface FastEthernet0/26
- switchport access vlan 2
+ switchport access vlan 3
  switchport mode access
  switchport port-security maximum 2
  switchport port-security
- --More--          switchport port-security violation restrict
+ switchport port-security violation restrict
  switchport port-security mac-address sticky
- shutdown
+ --More--          switchport port-security mac-address sticky 9c8e.99d0.7e07
  power inline never
  spanning-tree portfast
 !
 interface FastEthernet0/27
- switchport access vlan 2
+ description A313
+ switchport access vlan 33
+ switchport mode access
+ power inline never
+!
+interface FastEthernet0/28
+ switchport access vlan 3
  switchport mode access
  switchport port-security maximum 2
  switchport port-security
  switchport port-security violation restrict
  switchport port-security mac-address sticky
- shutdown
- power inline never
- spanning-tree portfast
-!
-interface FastEthernet0/28
- switchport access vlan 2
- switchport mode access
- switchport port-security maximum 2
- switchport port-security
- switchport port-security violation restrict
- --More--          switchport port-security mac-address sticky
  shutdown
  power inline never
  spanning-tree portfast
 !
 interface FastEthernet0/29
- description hqoerwep D@G NO
- switchport access vlan 2
+ description Pohil IC
+ --More--          switchport access vlan 4
  switchport mode access
  switchport port-security maximum 2
  switchport port-security
  switchport port-security violation restrict
  switchport port-security mac-address sticky
- shutdown
  power inline never
  spanning-tree portfast
 !
 interface FastEthernet0/30
- switchport access vlan 2
+ description Stenograf
+ switchport access vlan 73
  switchport mode access
  switchport port-security maximum 2
  switchport port-security
  switchport port-security violation restrict
- --More--          switchport port-security mac-address sticky
- shutdown
+ switchport port-security mac-address sticky
+ switchport port-security mac-address sticky 1860.2498.e63d
  power inline never
  spanning-tree portfast
 !
 interface FastEthernet0/31
- switchport access vlan 2
- switchport mode access
+ switchport access vlan 3
+ --More--          switchport mode access
  switchport port-security maximum 2
  switchport port-security
  switchport port-security violation restrict
@@ -466,7 +459,60 @@ interface FastEthernet0/31
  spanning-tree portfast
 !
 interface FastEthernet0/32
- switchport access vlan 2
+ switchport access vlan 3
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ shutdown
+ power inline never
+ spanning-tree portfast
+!
+interface FastEthernet0/33
+ switchport access vlan 3
+ switchport mode access
+ --More--          switchport port-security maximum 2
+ switchport port-security
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ shutdown
+ power inline never
+ spanning-tree portfast
+!
+interface FastEthernet0/34
+ switchport access vlan 3
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ shutdown
+ power inline never
+ spanning-tree portfast
+!
+interface FastEthernet0/35
+ switchport access vlan 3
+ switchport mode access
+ switchport port-security maximum 2
+ --More--          switchport port-security
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ power inline never
+ spanning-tree portfast
+!
+interface FastEthernet0/36
+ switchport access vlan 33
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ power inline never
+ spanning-tree portfast
+!
+interface FastEthernet0/37
+ switchport access vlan 3
  switchport mode access
  switchport port-security maximum 2
  switchport port-security
@@ -476,74 +522,26 @@ interface FastEthernet0/32
  power inline never
  spanning-tree portfast
 !
-interface FastEthernet0/33
- switchport access vlan 2
- switchport mode access
- switchport port-security maximum 2
- switchport port-security violation restrict
- switchport port-security mac-address sticky
- power inline never
- speed 100
- duplex half
- spanning-tree portfast
-!
-interface FastEthernet0/34
- switchport access vlan 2
- switchport mode access
- switchport port-security maximum 2
- switchport port-security
- switchport port-security violation restrict
- switchport port-security mac-address sticky
- shutdown
- --More--          power inline never
- spanning-tree portfast
-!
-interface FastEthernet0/35
- switchport access vlan 2
- switchport mode access
- switchport port-security maximum 2
- switchport port-security
- switchport port-security violation restrict
- switchport port-security mac-address sticky
- shutdown
- power inline never
- spanning-tree portfast
-!
-interface FastEthernet0/36
- switchport access vlan 2
- switchport mode access
- switchport port-security maximum 2
- switchport port-security
- switchport port-security violation restrict
- switchport port-security mac-address sticky
- shutdown
- power inline never
- --More--          spanning-tree portfast
-!
-interface FastEthernet0/37
- switchport access vlan 2
- switchport mode access
- switchport port-security maximum 2
- switchport port-security
- switchport port-security violation restrict
- switchport port-security mac-address sticky
- shutdown
- power inline never
- spanning-tree portfast
-!
 interface FastEthernet0/38
- switchport access vlan 2
+ description Press B306
+ switchport access vlan 4
  switchport mode access
- switchport port-security maximum 2
+ switchport port-security maximum 7
  switchport port-security
  switchport port-security violation restrict
  switchport port-security mac-address sticky
- shutdown
+ switchport port-security mac-address sticky 0c54.a517.dc6b
+ switchport port-security mac-address sticky 2c27.d71a.354d
+ switchport port-security mac-address sticky 54be.f725.1c19
+ switchport port-security mac-address sticky 9c8e.99d0.7e26
+ switchport port-security mac-address sticky 9c8e.99d0.7e35
+ switchport port-security mac-address sticky 9c8e.99d0.7ea7
+ switchport port-security mac-address sticky 9c93.4e1a.884f
  power inline never
  spanning-tree portfast
- --More--         !
+!
 interface FastEthernet0/39
- switchport access vlan 2
+ --More--          switchport access vlan 3
  switchport mode access
  switchport port-security maximum 2
  switchport port-security
@@ -554,24 +552,25 @@ interface FastEthernet0/39
  spanning-tree portfast
 !
 interface FastEthernet0/40
- switchport access vlan 2
+ description ZAL-312
+ switchport access vlan 33
  switchport mode access
  switchport port-security maximum 2
- switchport port-security
  switchport port-security violation restrict
  switchport port-security mac-address sticky
- shutdown
  power inline never
  spanning-tree portfast
 !
- --More--         interface FastEthernet0/41
- switchport access vlan 2
- switchport mode access
+interface FastEthernet0/41
+ description kab-B209-210
+ switchport access vlan 4
+ --More--          switchport mode access
  switchport port-security maximum 2
  switchport port-security
  switchport port-security violation restrict
  switchport port-security mac-address sticky
- shutdown
+ switchport port-security mac-address sticky 9c8e.99d0.6ddb
+ switchport port-security mac-address sticky a45d.365f.0833
  power inline never
  spanning-tree portfast
 !
@@ -583,17 +582,15 @@ interface FastEthernet0/42
  switchport port-security
  switchport port-security violation restrict
  switchport port-security mac-address sticky
+ switchport port-security mac-address sticky 9c8e.99d0.7e04
+ switchport port-security mac-address sticky 9c8e.99d0.7e79
  power inline never
  spanning-tree portfast
 !
-interface FastEthernet0/43
- --More--          description DAZ_test
- switchport access vlan 2
+ --More--         interface FastEthernet0/43
+ description DAZ_test
+ switchport access vlan 33
  switchport mode access
- switchport port-security maximum 2
- switchport port-security
- switchport port-security violation restrict
- switchport port-security mac-address sticky
  power inline never
  spanning-tree portfast
 !
@@ -601,69 +598,65 @@ interface FastEthernet0/44
  description DAZ_test
  switchport access vlan 2
  switchport mode access
- switchport port-security maximum 2
+ switchport port-security maximum 20
  switchport port-security violation restrict
  switchport port-security mac-address sticky
  power inline never
  spanning-tree portfast
 !
 interface FastEthernet0/45
- description DAZ-EKS-Ertas
- switchport access vlan 33
- --More--          switchport mode access
+ switchport access vlan 3
+ switchport mode access
  switchport port-security maximum 2
  switchport port-security
  switchport port-security violation restrict
- switchport port-security mac-address sticky
- switchport port-security mac-address sticky 0860.6ed9.85df
+ --More--          switchport port-security mac-address sticky
+ shutdown
  power inline never
  spanning-tree portfast
 !
 interface FastEthernet0/46
- description DAZ-EKS-Kemal
- switchport access vlan 33
+ switchport access vlan 3
  switchport mode access
  switchport port-security maximum 2
  switchport port-security
  switchport port-security violation restrict
  switchport port-security mac-address sticky
- switchport port-security mac-address sticky 5404.a63c.c284
+ shutdown
  power inline never
  spanning-tree portfast
 !
 interface FastEthernet0/47
- description Abdiyev EKS
- --More--          switchport access vlan 33
- switchport mode access
- switchport port-security maximum 6
- switchport port-security
- switchport port-security violation restrict
- switchport port-security mac-address sticky
- power inline never
- speed 100
- duplex half
- spanning-tree portfast
-!
-interface FastEthernet0/48
- switchport access vlan 4
+ switchport access vlan 3
  switchport mode access
  switchport port-security maximum 2
  switchport port-security
  switchport port-security violation restrict
  switchport port-security mac-address sticky
- switchport port-security mac-address sticky 9c8e.99d0.6db0
- switchport port-security mac-address sticky 9c8e.99d0.753f
+ --More--          switchport port-security mac-address sticky 9c8e.99d0.810f
+ switchport port-security mac-address sticky 9c8e.99d2.b7f5
  power inline never
  spanning-tree portfast
 !
- --More--         interface GigabitEthernet0/1
+interface FastEthernet0/48
+ switchport access vlan 3
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ shutdown
+ power inline never
+ spanning-tree portfast
+!
+interface GigabitEthernet0/1
  switchport trunk encapsulation dot1q
- switchport trunk allowed vlan 1-35,70-77
+ switchport trunk allowed vlan 1-35,70-78,302,313
  switchport mode trunk
 !
 interface GigabitEthernet0/2
  switchport mode dynamic desirable
-!
+ --More--         !
 interface GigabitEthernet0/3
 !
 interface GigabitEthernet0/4
@@ -671,338 +664,59 @@ interface GigabitEthernet0/4
 interface Vlan1
  ip address x.x.x.x x.x.x.x
  ip helper-address x.x.x.x
- no ip route-cache
- no ip mroute-cache
+ ip helper-address x.x.x.x
+!
+interface Vlan31
+ no ip address
 !
 ip classless
-ip forward-protocol udp bootps
 ip forward-protocol udp bootpc
+ip forward-protocol udp bootps
 no ip http server
 ip http secure-server
- --More--         !
+!
 kron occurrence daily-backup at 18:05 recurring
  policy-list Backup
 !
 kron policy-list Backup
- cli copy running-config ftp://x.x.x.x 
+ --More--          cli copy running-config ftp://x.x.x.x 
  cli copy running-config ftp://x.x.x.x 
 !
-logging facility local3
-logging x.x.x.x
+snmp-server community mazhilis RO
+snmp-server community seeshat RW
+snmp-server enable traps snmp authentication linkdown linkup coldstart warmstart
+snmp-server enable traps syslog
 snmp-server host x.x.x.x ciscoworks 
 !
 control-plane
 !
-banner motd ^CC
-**********************************************************
-*               Welcome to the SW 2Floor-5               *
-*                     Location: Senat                    *
-**********************************************************
+banner motd ^CCC
+!**********************************************************!
+!                Welcome to the SW base034               !
+!                Location:Mazilis                          !
+!**********************************************************!
 ^C
 !
 line con 0
  exec-timeout 0 0
- --More--          password 7 104D000A0618
+ password 7 01100F175804
  logging synchronous
- terminal-type mon
- history size 100
 line vty 0 4
- exec-timeout 5 0
- password 7 1511021F0725
+ --More--          exec-timeout 5 0
+ password 7 00071A150754
  logging synchronous
- terminal-type mon
- history size 100
  transport input ssh
 line vty 5 15
  exec-timeout 5 0
- password 7 00071A150754
+ password 7 110A1016141D
  logging synchronous
- terminal-type mon
- history size 100
  transport input ssh
 !
-ntp logging
-ntp clock-period 36028750
+ntp clock-period 36028780
 ntp server x.x.x.x prefer
 end
- --More--         
-2Floor5#             showspan    span       spanning-tree
 
-VLAN0001
-  Spanning tree enabled protocol ieee
-  Root ID    Priority    32769
-             Address     0017.94c3.e100
-             Cost        8
-             Port        1 (GigabitEthernet0/1)
-             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
-
-  Bridge ID  Priority    32769  (priority 32768 sys-id-ext 1)
-             Address     d0c2.8239.4500
-             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
-             Aging Time  300 sec
-
-Interface           Role Sts Cost      Prio.Nbr Type
-------------------- ---- --- --------- -------- --------------------------------
-Gi0/1               Root FWD 4         128.1    P2p 
-
-
- --More--         
-VLAN0002
-  Spanning tree enabled protocol ieee
-  Root ID    Priority    32770
-             Address     0017.94c3.e100
-             Cost        8
-             Port        1 (GigabitEthernet0/1)
-             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
-
-  Bridge ID  Priority    32770  (priority 32768 sys-id-ext 2)
-             Address     d0c2.8239.4500
-             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
-             Aging Time  300 sec
-
-Interface           Role Sts Cost      Prio.Nbr Type
-------------------- ---- --- --------- -------- --------------------------------
-Gi0/1               Root FWD 4         128.1    P2p 
-Fa0/2               Desg FWD 100       128.4    P2p Edge 
-Fa0/12              Desg FWD 19        128.14   P2p Edge 
-Fa0/21              Desg FWD 19        128.23   P2p Edge 
-
-
- --More--         
-VLAN0003
-  Spanning tree enabled protocol ieee
-  Root ID    Priority    32771
-             Address     0017.94c3.e100
-             Cost        8
-             Port        1 (GigabitEthernet0/1)
-             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
-
-  Bridge ID  Priority    32771  (priority 32768 sys-id-ext 3)
-             Address     d0c2.8239.4500
-             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
-             Aging Time  300 sec
-
-Interface           Role Sts Cost      Prio.Nbr Type
-------------------- ---- --- --------- -------- --------------------------------
-Gi0/1               Root FWD 4         128.1    P2p 
-
-
- --More--         
-VLAN0004
-  Spanning tree enabled protocol ieee
-  Root ID    Priority    32772
-             Address     0017.94c3.e100
-             Cost        8
-             Port        1 (GigabitEthernet0/1)
-             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
-
-  Bridge ID  Priority    32772  (priority 32768 sys-id-ext 4)
-             Address     d0c2.8239.4500
-             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
-             Aging Time  300 sec
-
-Interface           Role Sts Cost      Prio.Nbr Type
-------------------- ---- --- --------- -------- --------------------------------
-Gi0/1               Root FWD 4         128.1    P2p 
-Fa0/3               Desg FWD 19        128.5    P2p Edge 
-Fa0/22              Desg FWD 19        128.24   P2p Edge 
-
-
- --More--         
-VLAN0005
-  Spanning tree enabled protocol ieee
-  Root ID    Priority    32773
-             Address     0017.94c3.e100
-             Cost        8
-             Port        1 (GigabitEthernet0/1)
-             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
-
-  Bridge ID  Priority    32773  (priority 32768 sys-id-ext 5)
-             Address     d0c2.8239.4500
-             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
-             Aging Time  300 sec
-
-Interface           Role Sts Cost      Prio.Nbr Type
-------------------- ---- --- --------- -------- --------------------------------
-Gi0/1               Root FWD 4         128.1    P2p 
-
-
- --More--         
-VLAN0006
-  Spanning tree enabled protocol ieee
-  Root ID    Priority    32774
-             Address     0017.94c3.e100
-             Cost        8
-             Port        1 (GigabitEthernet0/1)
-             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
-
-  Bridge ID  Priority    32774  (priority 32768 sys-id-ext 6)
-             Address     d0c2.8239.4500
-             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
-             Aging Time  300 sec
-
-Interface           Role Sts Cost      Prio.Nbr Type
-------------------- ---- --- --------- -------- --------------------------------
-Gi0/1               Root FWD 4         128.1    P2p 
-
-
- --More--         
-VLAN0020
-  Spanning tree enabled protocol ieee
-  Root ID    Priority    32788
-             Address     0017.94c3.e100
-             Cost        8
-             Port        1 (GigabitEthernet0/1)
-             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
-
-  Bridge ID  Priority    32788  (priority 32768 sys-id-ext 20)
-             Address     d0c2.8239.4500
-             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
-             Aging Time  300 sec
-
-Interface           Role Sts Cost      Prio.Nbr Type
-------------------- ---- --- --------- -------- --------------------------------
-Gi0/1               Root FWD 4         128.1    P2p 
-
-
- --More--         
-VLAN0031
-  Spanning tree enabled protocol ieee
-  Root ID    Priority    32799
-             Address     0017.94c3.e100
-             Cost        8
-             Port        1 (GigabitEthernet0/1)
-             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
-
-  Bridge ID  Priority    32799  (priority 32768 sys-id-ext 31)
-             Address     d0c2.8239.4500
-             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
-             Aging Time  300 sec
-
-Interface           Role Sts Cost      Prio.Nbr Type
-------------------- ---- --- --------- -------- --------------------------------
-Gi0/1               Root FWD 4         128.1    P2p 
-
-
- --More--         
-VLAN0032
-  Spanning tree enabled protocol ieee
-  Root ID    Priority    32800
-             Address     0017.94c3.e100
-             Cost        8
-             Port        1 (GigabitEthernet0/1)
-             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
-
-  Bridge ID  Priority    32800  (priority 32768 sys-id-ext 32)
-             Address     d0c2.8239.4500
-             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
-             Aging Time  300 sec
-
-Interface           Role Sts Cost      Prio.Nbr Type
-------------------- ---- --- --------- -------- --------------------------------
-Gi0/1               Root FWD 4         128.1    P2p 
-
-
- --More--         
-VLAN0033
-  Spanning tree enabled protocol ieee
-  Root ID    Priority    32801
-             Address     0017.94c3.e100
-             Cost        8
-             Port        1 (GigabitEthernet0/1)
-             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
-
-  Bridge ID  Priority    32801  (priority 32768 sys-id-ext 33)
-             Address     d0c2.8239.4500
-             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
-             Aging Time  300 sec
-
-Interface           Role Sts Cost      Prio.Nbr Type
-------------------- ---- --- --------- -------- --------------------------------
-Gi0/1               Root FWD 4         128.1    P2p 
-Fa0/23              Desg FWD 100       128.25   P2p Edge 
-Fa0/45              Desg FWD 19        128.49   P2p Edge 
-Fa0/46              Desg FWD 19        128.50   P2p Edge 
-
-
- --More--         
-VLAN0073
-  Spanning tree enabled protocol ieee
-  Root ID    Priority    32841
-             Address     0017.94c3.e100
-             Cost        8
-             Port        1 (GigabitEthernet0/1)
-             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
-
-  Bridge ID  Priority    32841  (priority 32768 sys-id-ext 73)
-             Address     d0c2.8239.4500
-             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
-             Aging Time  300 sec
-
-Interface           Role Sts Cost      Prio.Nbr Type
-------------------- ---- --- --------- -------- --------------------------------
-Gi0/1               Root FWD 4         128.1    P2p 
-Fa0/4               Desg FWD 19        128.6    P2p Edge 
-
-
- --More--         
-VLAN0074
-  Spanning tree enabled protocol ieee
-  Root ID    Priority    32842
-             Address     0017.94c3.e100
-             Cost        8
-             Port        1 (GigabitEthernet0/1)
-             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
-
-  Bridge ID  Priority    32842  (priority 32768 sys-id-ext 74)
-             Address     d0c2.8239.4500
-             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
-             Aging Time  300 sec
-
-Interface           Role Sts Cost      Prio.Nbr Type
-------------------- ---- --- --------- -------- --------------------------------
-Gi0/1               Root FWD 4         128.1    P2p 
-
-
- --More--         
-VLAN0075
-  Spanning tree enabled protocol ieee
-  Root ID    Priority    32843
-             Address     0017.94c3.e100
-             Cost        8
-             Port        1 (GigabitEthernet0/1)
-             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
-
-  Bridge ID  Priority    32843  (priority 32768 sys-id-ext 75)
-             Address     d0c2.8239.4500
-             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
-             Aging Time  300 sec
-
-Interface           Role Sts Cost      Prio.Nbr Type
-------------------- ---- --- --------- -------- --------------------------------
-Gi0/1               Root FWD 4         128.1    P2p 
-
-
- --More--         
-VLAN0077
-  Spanning tree enabled protocol ieee
-  Root ID    Priority    32845
-             Address     0017.94c3.e100
-             Cost        8
-             Port        1 (GigabitEthernet0/1)
-             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
-
-  Bridge ID  Priority    32845  (priority 32768 sys-id-ext 77)
-             Address     d0c2.8239.4500
-             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
-             Aging Time  300 sec
-
-Interface           Role Sts Cost      Prio.Nbr Type
-------------------- ---- --- --------- -------- --------------------------------
-Gi0/1               Root FWD 4         128.1    P2p 
-
-
-2Floor5#            show version
+base014#           show p ve er
 Cisco IOS Software, C3560 Software (C3560-IPBASEK9-M), Version 12.2(50)SE5, RELEASE SOFTWARE (fc1)
 Technical Support: http://www.cisco.com/techsupport
 Copyright (c) 1986-2010 by Cisco Systems, Inc.
@@ -1012,9 +726,9 @@ Image text-base: 0x01000000, data-base: 0x02900000
 ROM: Bootstrap program is C3560 boot loader
 BOOTLDR: C3560 Boot Loader (C3560-HBOOT-M) Version 12.2(53r)SEY4, RELEASE SOFTWARE (fc1)
 
-2Floor5 uptime is 13 weeks, 3 days, 15 hours, 24 minutes
+base014 uptime is 2 years, 10 weeks, 6 days, 1 hour, 37 minutes
 System returned to ROM by power-on
-System restarted at 20:41:53 Astana Thu Jul 7 2022
+System restarted at 10:44:31 Astana Sun Jul 26 2020
 System image file is "flash:/c3560-ipbasek9-mz.122-50.SE5/c3560-ipbasek9-mz.122-50.SE5.bin"
 
 
@@ -1034,23 +748,67 @@ If you require further assistance please contact us by sending email to
 export@cisco.com.
 
 cisco WS-C3560V2-48PS (PowerPC405) processor (revision L0) with 131072K bytes of memory.
-Processor board ID FDO1523X1AY
+Processor board ID FDO1523X1AV
 Last reset from power-on
-1 Virtual Ethernet interface
+2 Virtual Ethernet interfaces
 48 FastEthernet interfaces
 4 Gigabit Ethernet interfaces
 The password-recovery mechanism is enabled.
 
 512K bytes of flash-simulated non-volatile configuration memory.
-Base ethernet MAC Address       : D0:C2:82:39:45:00
+Base ethernet MAC Address       : D0:C2:82:3D:33:80
 Motherboard assembly number     : 73-12630-01
 Power supply part number        : 341-0266-03
- --More--         Motherboard serial number       : FDO15240F7H
-Power supply serial number      : LIT15200KTK
+ --More--         
+base014#h sh             show ver
+Cisco IOS Software, C3560 Software (C3560-IPBASEK9-M), Version 12.2(50)SE5, RELEASE SOFTWARE (fc1)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2010 by Cisco Systems, Inc.
+Compiled Tue 28-Sep-10 13:21 by prod_rel_team
+Image text-base: 0x01000000, data-base: 0x02900000
+
+ROM: Bootstrap program is C3560 boot loader
+BOOTLDR: C3560 Boot Loader (C3560-HBOOT-M) Version 12.2(53r)SEY4, RELEASE SOFTWARE (fc1)
+
+base014 uptime is 2 years, 10 weeks, 6 days, 1 hour, 37 minutes
+System returned to ROM by power-on
+System restarted at 10:44:31 Astana Sun Jul 26 2020
+System image file is "flash:/c3560-ipbasek9-mz.122-50.SE5/c3560-ipbasek9-mz.122-50.SE5.bin"
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+ --More--         compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+cisco WS-C3560V2-48PS (PowerPC405) processor (revision L0) with 131072K bytes of memory.
+Processor board ID FDO1523X1AV
+Last reset from power-on
+2 Virtual Ethernet interfaces
+48 FastEthernet interfaces
+4 Gigabit Ethernet interfaces
+The password-recovery mechanism is enabled.
+
+512K bytes of flash-simulated non-volatile configuration memory.
+Base ethernet MAC Address       : D0:C2:82:3D:33:80
+Motherboard assembly number     : 73-12630-01
+Power supply part number        : 341-0266-03
+ --More--         Motherboard serial number       : FDO15240FA0
+Power supply serial number      : LIT15200L03
 Model revision number           : L0
 Motherboard revision number     : C0
 Model number                    : WS-C3560V2-48PS-S
-System serial number            : FDO1523X1AY
+System serial number            : FDO1523X1AV
 Top Assembly Part Number        : 800-33161-02
 Top Assembly Revision Number    : A0
 Version ID                      : V07
@@ -1065,14 +823,349 @@ Switch Ports Model              SW Version            SW Image
 
 Configuration register is 0xF
 
-2Floor5#             show envall
-                             ^
-% Invalid input detected at '^' marker.
+base014#show span
 
-2Floor5#             show envall    all
+VLAN0001
+  Spanning tree enabled protocol ieee
+  Root ID    Priority    32769
+             Address     0017.94c3.e100
+             Cost        10
+             Port        1 (GigabitEthernet0/1)
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+
+  Bridge ID  Priority    32769  (priority 32768 sys-id-ext 1)
+             Address     d0c2.823d.3380
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+             Aging Time  300 sec
+
+Interface           Role Sts Cost      Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Gi0/1               Root FWD 4         128.1    P2p 
+
+
+ --More--         
+VLAN0002
+  Spanning tree enabled protocol ieee
+  Root ID    Priority    32770
+             Address     0017.94c3.e100
+             Cost        10
+             Port        1 (GigabitEthernet0/1)
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+
+  Bridge ID  Priority    32770  (priority 32768 sys-id-ext 2)
+             Address     d0c2.823d.3380
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+             Aging Time  300 sec
+
+Interface           Role Sts Cost      Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Gi0/1               Root FWD 4         128.1    P2p 
+Fa0/44              Desg FWD 19        128.48   P2p Edge 
+
+
+ --More--         
+VLAN0003
+  Spanning tree enabled protocol ieee
+  Root ID    Priority    32771
+             Address     0017.94c3.e100
+             Cost        10
+             Port        1 (GigabitEthernet0/1)
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+
+  Bridge ID  Priority    32771  (priority 32768 sys-id-ext 3)
+             Address     d0c2.823d.3380
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+             Aging Time  300 sec
+
+Interface           Role Sts Cost      Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Gi0/1               Root FWD 4         128.1    P2p 
+Fa0/3               Desg FWD 19        128.5    P2p Edge 
+Fa0/7               Desg FWD 19        128.9    P2p Edge 
+Fa0/10              Desg FWD 19        128.12   P2p Edge 
+Fa0/11              Desg FWD 19        128.13   P2p Edge 
+Fa0/24              Desg FWD 19        128.26   P2p Edge 
+Fa0/47              Desg FWD 100       128.51   P2p Edge 
+ --More--         
+
+ --More--         
+VLAN0004
+  Spanning tree enabled protocol ieee
+  Root ID    Priority    32772
+             Address     0017.94c3.e100
+             Cost        10
+             Port        1 (GigabitEthernet0/1)
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+
+  Bridge ID  Priority    32772  (priority 32768 sys-id-ext 4)
+             Address     d0c2.823d.3380
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+             Aging Time  300 sec
+
+Interface           Role Sts Cost      Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Gi0/1               Root FWD 4         128.1    P2p 
+Fa0/38              Desg FWD 19        128.42   P2p Edge 
+
+
+ --More--         
+VLAN0005
+  Spanning tree enabled protocol ieee
+  Root ID    Priority    32773
+             Address     0017.94c3.e100
+             Cost        10
+             Port        1 (GigabitEthernet0/1)
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+
+  Bridge ID  Priority    32773  (priority 32768 sys-id-ext 5)
+             Address     d0c2.823d.3380
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+             Aging Time  300 sec
+
+Interface           Role Sts Cost      Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Gi0/1               Root FWD 4         128.1    P2p 
+Fa0/16              Desg FWD 19        128.18   P2p Edge 
+
+
+ --More--         
+VLAN0006
+  Spanning tree enabled protocol ieee
+  Root ID    Priority    32774
+             Address     0017.94c3.e100
+             Cost        10
+             Port        1 (GigabitEthernet0/1)
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+
+  Bridge ID  Priority    32774  (priority 32768 sys-id-ext 6)
+             Address     d0c2.823d.3380
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+             Aging Time  300 sec
+
+Interface           Role Sts Cost      Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Gi0/1               Root FWD 4         128.1    P2p 
+
+
+ --More--         
+VLAN0020
+  Spanning tree enabled protocol ieee
+  Root ID    Priority    32788
+             Address     0017.94c3.e100
+             Cost        10
+             Port        1 (GigabitEthernet0/1)
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+
+  Bridge ID  Priority    32788  (priority 32768 sys-id-ext 20)
+             Address     d0c2.823d.3380
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+             Aging Time  300 sec
+
+Interface           Role Sts Cost      Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Gi0/1               Root FWD 4         128.1    P2p 
+
+
+ --More--         
+VLAN0031
+  Spanning tree enabled protocol ieee
+  Root ID    Priority    32799
+             Address     0017.94c3.e100
+             Cost        10
+             Port        1 (GigabitEthernet0/1)
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+
+  Bridge ID  Priority    32799  (priority 32768 sys-id-ext 31)
+             Address     d0c2.823d.3380
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+             Aging Time  300 sec
+
+Interface           Role Sts Cost      Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Gi0/1               Root FWD 4         128.1    P2p 
+
+
+ --More--         
+VLAN0032
+  Spanning tree enabled protocol ieee
+  Root ID    Priority    32800
+             Address     0017.94c3.e100
+             Cost        10
+             Port        1 (GigabitEthernet0/1)
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+
+  Bridge ID  Priority    32800  (priority 32768 sys-id-ext 32)
+             Address     d0c2.823d.3380
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+             Aging Time  300 sec
+
+Interface           Role Sts Cost      Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Gi0/1               Root FWD 4         128.1    P2p 
+
+
+ --More--         
+VLAN0033
+  Spanning tree enabled protocol ieee
+  Root ID    Priority    32801
+             Address     0017.94c3.e100
+             Cost        10
+             Port        1 (GigabitEthernet0/1)
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+
+  Bridge ID  Priority    32801  (priority 32768 sys-id-ext 33)
+             Address     d0c2.823d.3380
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+             Aging Time  300 sec
+
+Interface           Role Sts Cost      Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Gi0/1               Root FWD 4         128.1    P2p 
+Fa0/13              Desg FWD 19        128.15   P2p Edge 
+Fa0/14              Desg FWD 19        128.16   P2p Edge 
+Fa0/15              Desg FWD 19        128.17   P2p Edge 
+Fa0/17              Desg FWD 19        128.19   P2p Edge 
+
+
+ --More--         
+VLAN0073
+  Spanning tree enabled protocol ieee
+  Root ID    Priority    32841
+             Address     0017.94c3.e100
+             Cost        10
+             Port        1 (GigabitEthernet0/1)
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+
+  Bridge ID  Priority    32841  (priority 32768 sys-id-ext 73)
+             Address     d0c2.823d.3380
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+             Aging Time  300 sec
+
+Interface           Role Sts Cost      Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Gi0/1               Root FWD 4         128.1    P2p 
+Fa0/4               Desg FWD 19        128.6    P2p Edge 
+Fa0/25              Desg FWD 19        128.29   P2p Edge 
+
+
+ --More--         
+VLAN0074
+  Spanning tree enabled protocol ieee
+  Root ID    Priority    32842
+             Address     0017.94c3.e100
+             Cost        10
+             Port        1 (GigabitEthernet0/1)
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+
+  Bridge ID  Priority    32842  (priority 32768 sys-id-ext 74)
+             Address     d0c2.823d.3380
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+             Aging Time  300 sec
+
+Interface           Role Sts Cost      Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Gi0/1               Root FWD 4         128.1    P2p 
+
+
+ --More--         
+VLAN0075
+  Spanning tree enabled protocol ieee
+  Root ID    Priority    32843
+             Address     0017.94c3.e100
+             Cost        10
+             Port        1 (GigabitEthernet0/1)
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+
+  Bridge ID  Priority    32843  (priority 32768 sys-id-ext 75)
+             Address     d0c2.823d.3380
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+             Aging Time  300 sec
+
+Interface           Role Sts Cost      Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Gi0/1               Root FWD 4         128.1    P2p 
+
+
+ --More--         
+VLAN0077
+  Spanning tree enabled protocol ieee
+  Root ID    Priority    32845
+             Address     0017.94c3.e100
+             Cost        10
+             Port        1 (GigabitEthernet0/1)
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+
+  Bridge ID  Priority    32845  (priority 32768 sys-id-ext 77)
+             Address     d0c2.823d.3380
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+             Aging Time  300 sec
+
+Interface           Role Sts Cost      Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Gi0/1               Root FWD 4         128.1    P2p 
+
+
+ --More--         
+VLAN0078
+  Spanning tree enabled protocol ieee
+  Root ID    Priority    32846
+             Address     0017.94c3.e100
+             Cost        10
+             Port        1 (GigabitEthernet0/1)
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+
+  Bridge ID  Priority    32846  (priority 32768 sys-id-ext 78)
+             Address     d0c2.823d.3380
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+             Aging Time  300 sec
+
+Interface           Role Sts Cost      Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Gi0/1               Root FWD 4         128.1    P2p 
+
+
+ --More--         
+VLAN0302
+  Spanning tree enabled protocol ieee
+  Root ID    Priority    33070
+             Address     0017.94c3.e100
+             Cost        10
+             Port        1 (GigabitEthernet0/1)
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+
+  Bridge ID  Priority    33070  (priority 32768 sys-id-ext 302)
+             Address     d0c2.823d.3380
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+             Aging Time  300 sec
+
+Interface           Role Sts Cost      Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Gi0/1               Root FWD 4         128.1    P2p 
+
+
+ --More--         
+VLAN0313
+  Spanning tree enabled protocol ieee
+  Root ID    Priority    33081
+             Address     0017.94c3.e100
+             Cost        10
+             Port        1 (GigabitEthernet0/1)
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+
+  Bridge ID  Priority    33081  (priority 32768 sys-id-ext 313)
+             Address     d0c2.823d.3380
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+             Aging Time  300 sec
+
+Interface           Role Sts Cost      Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Gi0/1               Root FWD 4         128.1    P2p 
+
+
+base014#  show ev nv all
 FAN is OK
 TEMPERATURE is OK
-Temperature Value: 43 Degree Celsius
+Temperature Value: 47 Degree Celsius
 Temperature State: GREEN
 Yellow Threshold : 66 Degree Celsius
 Red Threshold    : 76 Degree Celsius
@@ -1084,4 +1177,4 @@ SW  Status          RPS Name          RPS Serial#  RPS Port#
 --  -------------   ----------------  -----------  ---------
 1   <>              <>
 
-2Floor5#
+base014#exit

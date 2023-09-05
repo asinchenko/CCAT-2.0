@@ -3,13 +3,13 @@ login as: cisco
 cisco@x.x.x.x's password: 
 
 !*****************************!
-!  Welcome Switch 2Floor4     ! 
-!      Location: Senat        !
+!  Welcome Switch base4     ! 
+!      Location: seeshat        !
 !*****************************!
-2Floor4>em n
+base4>em n
 Password: 
-2Floor4#
-2Floor4#sh run
+base4#
+base4#sh run
 Building configuration...
 
 Current configuration : 9455 bytes
@@ -23,7 +23,7 @@ service timestamps log datetime localtime
 service password-encryption
 service sequence-numbers
 !
-hostname 2Floor4
+hostname base4
 !
 enable password 7 045802150C2E
 !
@@ -382,7 +382,7 @@ kron policy-list Backup
 logging facility local3
 logging x.x.x.x
 snmp-server community mazhilis RO
-snmp-server community senat RW
+snmp-server community seeshat RW
 snmp-server enable traps snmp authentication linkdown linkup coldstart warmstart
 snmp-server enable traps stpx root-inconsistency loop-inconsistency
 snmp-server enable traps syslog
@@ -393,8 +393,8 @@ control-plane
 !
 banner motd ^C
 !*****************************!
- --More--         !  Welcome Switch 2Floor4     ! 
-!      Location: Senat        !
+ --More--         !  Welcome Switch base4     ! 
+!      Location: seeshat        !
 !*****************************!^C
 !
 line con 0
@@ -425,34 +425,34 @@ ntp server x.x.x.x prefer
 ntp server x.x.x.x prefer
 end
 
-2Floor4#
-2Floor4# 
-2Floor4# 
-2Floor4# 
-2Floor4# 
-2Floor4# 
-2Floor4# 
-2Floor4# 
-2Floor4# 
-2Floor4# 
-2Floor4# 
-2Floor4#
-2Floor4#
-2Floor4#
-2Floor4#
-2Floor4#
-2Floor4#
-2Floor4#
-2Floor4#
-2Floor4#
-2Floor4#
-2Floor4#
-2Floor4#
-2Floor4#
-2Floor4#
-2Floor4#
-2Floor4#
-2Floor4#sh ver
+base4#
+base4# 
+base4# 
+base4# 
+base4# 
+base4# 
+base4# 
+base4# 
+base4# 
+base4# 
+base4# 
+base4#
+base4#
+base4#
+base4#
+base4#
+base4#
+base4#
+base4#
+base4#
+base4#
+base4#
+base4#
+base4#
+base4#
+base4#
+base4#
+base4#sh ver
 Cisco IOS Software, C3550 Software (C3550-IPSERVICESK9-M), Version 12.2(44)SE6, RELEASE SOFTWARE (fc1)
 Copyright (c) 1986-2009 by Cisco Systems, Inc.
 Compiled Mon 09-Mar-09 20:28 by gereddy
@@ -460,7 +460,7 @@ Image text-base: 0x00003000, data-base: 0x012A99FC
 
 ROM: Bootstrap program is C3550 boot loader
 
-2Floor4 uptime is 7 weeks, 2 days, 7 hours, 20 minutes
+base4 uptime is 7 weeks, 2 days, 7 hours, 20 minutes
 System returned to ROM by power-on
 System restarted at 09:42:00 Astana Sun Aug 21 2022
 System image file is "flash:c3550-ipbase-mz.122-25.SEB4/c3550-ipservicesk9-mz.122-44.SE6.bin"
@@ -514,16 +514,16 @@ Model number: WS-C3550-48-SMI
 System serial number: CAT1014Z08S
 Configuration register is 0x10F
 
-2Floor4#
-2Floor4# 
-2Floor4# 
-2Floor4# 
-2Floor4# 
-2Floor4# 
-2Floor4# 
-2Floor4#
-2Floor4#sh inv
-NAME: "2Floor4", DESCR: "Cisco Catalyst 3550 48 10/100 baseT ports + 2 Gig uplinks fixed configuration Layer 2/3 Ethernet Switch"
+base4#
+base4# 
+base4# 
+base4# 
+base4# 
+base4# 
+base4# 
+base4#
+base4#sh inv
+NAME: "base4", DESCR: "Cisco Catalyst 3550 48 10/100 baseT ports + 2 Gig uplinks fixed configuration Layer 2/3 Ethernet Switch"
 PID: WS-C3550-48-SMI   , VID: S0 , SN: CAT1014Z08S
 
 NAME: "GigabitEthernet0/1 port adapter", DESCR: "shortwave fibre gigabit ethernet port adapter"
@@ -533,16 +533,16 @@ NAME: "GigabitEthernet0/2 port adapter", DESCR: "shortwave fibre gigabit etherne
 PID: GBIC_SX           , VID: 1E0 16C4 8000 87C, SN: AGM1133A069     
 
 
-2Floor4# 
-2Floor4# 
-2Floor4# 
-2Floor4# 
-2Floor4# 
-2Floor4# 
-2Floor4# 
-2Floor4#
-2Floor4#
-2Floor4#sh span
+base4# 
+base4# 
+base4# 
+base4# 
+base4# 
+base4# 
+base4# 
+base4#
+base4#
+base4#sh span
 
 VLAN0001
   Spanning tree enabled protocol ieee
@@ -888,16 +888,16 @@ Interface           Role Sts Cost      Prio.Nbr Type
 ------------------- ---- --- --------- -------- --------------------------------
 Gi0/1               Desg FWD 4         128.49   P2p 
 
-2Floor4#
-2Floor4#
-2Floor4#
-2Floor4#sh env all 
+base4#
+base4#
+base4#
+base4#sh env all 
 FAN is OK
 TEMPERATURE is OK
 POWER is OK
 RPS is NOT PRESENT
 
-2Floor4# 
-2Floor4# 
-2Floor4# 
-2Floor4# q
+base4# 
+base4# 
+base4# 
+base4# q

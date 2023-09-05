@@ -1,22 +1,23 @@
-=~=~=~=~=~=~=~=~=~=~=~= PuTTY log 2022.10.11 17:09:30 =~=~=~=~=~=~=~=~=~=~=~=
+=~=~=~=~=~=~=~=~=~=~=~= PuTTY log 2022.10.11 17:06:16 =~=~=~=~=~=~=~=~=~=~=~=
 login as: cisco
 Using keyboard-interactive authentication.
 Password: 
+CC
+**********************************************************
+*              Welcome to the SW base14               *
+*                  Location:seeshat                      *
+**********************************************************
 
-!**********************************************************!
-!                Welcome to the SW 4Floor32               !
-!                Location: DM-B                        !
-!**********************************************************!
-
-4Floor32>en
+base14>en
 Password: 
-4Floor32#
-4Floor32#sh run
+base14#
+base14#sh run
 Building configuration...
 
-Current configuration : 9969 bytes
+Current configuration : 11472 bytes
 !
-! No configuration change since last restart
+! Last configuration change at 11:26:07 Astana Tue Aug 23 2022 by cisco
+! NVRAM config last updated at 10:15:57 Astana Fri May 13 2022 by cisco
 !
 version 12.2
 no service pad
@@ -24,25 +25,26 @@ service timestamps debug datetime localtime
 service timestamps log datetime localtime
 service password-encryption
 !
-hostname 4Floor32
+hostname base14
 !
 boot-start-marker
 boot-end-marker
 !
-enable password 7 121A0C041104
+enable secret 5 $1$/Q89$PHc4/3HxE.1MoiUl8bdKD1
 !
-username cisco password 7 01100F175804
-!
-!
+username cisco privilege 15 secret 5 $1$ZluC$L5XxRjF6EKpgJ3vDfPjNm0
 aaa new-model
 !
- --More--         !
+!
+ --More--         aaa authentication login default local
 !
 !
 !
 aaa session-id common
 clock timezone Astana 6
 system mtu routing 1500
+no ip subnet-zero
+no ip domain-lookup
 ip domain-name parlam.kz
 ip name-server x.x.x.x
 !
@@ -51,40 +53,42 @@ login on-failure log
 login on-success log
 !
 !
-crypto pki trustpoint TP-self-signed-2722626560
+crypto pki trustpoint TP-self-signed-2185043328
  enrollment selfsigned
- subject-name cn=IOS-Self-Signed-Certificate-2722626560
+ subject-name cn=IOS-Self-Signed-Certificate-2185043328
  revocation-check none
- rsakeypair TP-self-signed-2722626560
+ rsakeypair TP-self-signed-2185043328
 !
-!
-crypto pki certificate chain TP-self-signed-2722626560
- --More--          certificate self-signed 01
- --More--           3082024A 308201B3 A0030201 02020101 300D0609 2A864886 F70D0101 04050030 
+ --More--         !
+ --More--         crypto pki certificate chain TP-self-signed-2185043328
+ certificate self-signed 01
+  3082024A 308201B3 A0030201 02020101 300D0609 2A864886 F70D0101 04050030 
   31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274 
-  69666963 6174652D 32373232 36323635 3630301E 170D3133 30353239 31313335 
-  31375A17 0D323030 31303130 30303030 305A3031 312F302D 06035504 03132649 
-  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D32 37323236 
-  32363536 3030819F 300D0609 2A864886 F70D0101 01050003 818D0030 81890281 
-  8100BE54 A3B18796 BB20E99B 5F94F1FC 28DB9CD9 580A939A 0044FC1F 4243C959 
-  9A0E1011 D12BC893 6116B7B9 719E4855 D9F96719 BFEFBCD0 26F30BF0 7DDE4AAE 
-  CFDCEF70 BAAC81D3 6D268147 9309014F B7709E26 A411E472 D3D5C51A A794B66C 
-  F7875DA0 CF159024 82CD2723 D9F497D6 303C1A91 C53F5E44 A3DFAE78 30D43C29 
-  2BDB0203 010001A3 72307030 0F060355 1D130101 FF040530 030101FF 301D0603 
-  551D1104 16301482 1234466C 6F6F7233 322E7061 726C616D 2E6B7A30 1F060355 
-  1D230418 30168014 DB12CFDB D14737FA B2B75618 22CA81C2 7F3F1358 301D0603 
-  551D0E04 160414DB 12CFDBD1 4737FAB2 B7561822 CA81C27F 3F135830 0D06092A 
-  864886F7 0D010104 05000381 8100B87B EB6D201F 0C860D92 89A8795B 8AA2D453 
-  73D4100C E8CDF86E D1EA50FE 29EBFE8B B6C6FC43 5350906D 8E5C6A64 5615C62E 
-  698A73BB E8B1953A 8FFBC213 465EE987 F905D792 D5188D49 B5665656 09300221 
-  9CC0242C 832656EE EA4FC158 1C0E3455 F094419E 52A5B447 F1D0AAC7 4E819A09 
-  A62E552C 22B4B207 420C5F5A 5A40
+  69666963 6174652D 32313835 30343333 3238301E 170D3933 30333031 30303237 
+  31335A17 0D323030 31303130 30303030 305A3031 312F302D 06035504 03132649 
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D32 31383530 
+  34333332 3830819F 300D0609 2A864886 F70D0101 01050003 818D0030 81890281 
+  8100AFF2 3E295CFF 5A368589 1AB48575 12BDEE99 192BEE80 BAF36960 85A7C514 
+  A1916772 3EB65C1D 7DB23258 E3F86706 18BA63AA D540CC40 20328B2C EF21B5B0 
+  D0D6B8AE 2C6BC353 27C9E101 CEDBF51D E084967B 4019C118 7CBB24BA 675272EA 
+  F75BC5D5 4718D2E1 80625BC8 B8A1551A 569966BE E466CB52 33ED98AC D8CA94F2 
+  DEC10203 010001A3 72307030 0F060355 1D130101 FF040530 030101FF 301D0603 
+  551D1104 16301482 1232466C 6F6F7233 342E7061 726C616D 2E6B7A30 1F060355 
+  1D230418 30168014 592DE36E CBE368A3 2E5CD5C0 DAC5C049 4DC97755 301D0603 
+  551D0E04 16041459 2DE36ECB E368A32E 5CD5C0DA C5C0494D C9775530 0D06092A 
+  864886F7 0D010104 05000381 8100A2EF 9C807577 6088E75D A783E814 1C3DC71B 
+  A16C1D65 1A836FA7 58E38F52 89E25B00 B0ACDCA0 D5EE36A8 8C5129D3 9555B5E5 
+  E72378B6 5944728E E592BBC0 FF584B87 205C6E49 BEADE56E 681E8685 7EDDE6AD 
+  03F44D0C E7DC2CA8 D67C44CC BF4D7F4B 6BF91C31 FEC724D8 84C2E048 7E9B6570 
+  E0B256E4 A32496F5 413722FB 770B
   quit
 !
+ --More--         !
+ --More--         !
 !
 !
- --More--         archive
- --More--          log config
+archive
+ log config
   logging enable
   logging size 200
   notify syslog contenttype plaintext
@@ -103,281 +107,345 @@ ip ssh version 2
 ip rcmd rcp-enable
 ip rcmd remote-host cwuser x.x.x.x cwuser enable
 !
-!
-!
-interface FastEthernet0/1
- switchport access vlan 20
- --More--          switchport mode access
- --More--          spanning-tree portfast
+ --More--         !
+ --More--         interface FastEthernet0/1
+ description DAZ_EKS kab-2-111
+ switchport access vlan 33
+ switchport mode access
+ power inline never
+ spanning-tree portfast
 !
 interface FastEthernet0/2
- switchport access vlan 20
+ description shaihislamov
+ switchport access vlan 33
  switchport mode access
- shutdown
+ power inline never
  spanning-tree portfast
 !
 interface FastEthernet0/3
- switchport access vlan 20
+ description DAZ_EKS kab-2-103
+ switchport access vlan 33
  switchport mode access
+ power inline never
  spanning-tree portfast
 !
 interface FastEthernet0/4
- switchport access vlan 20
- switchport mode access
+ description DAZ_EKS kab-2-108
+ --More--          switchport access vlan 33
+ --More--          switchport mode access
+ power inline never
  spanning-tree portfast
 !
 interface FastEthernet0/5
- switchport access vlan 20
+ description DAZ_EKS kab-2-213
+ switchport access vlan 33
  switchport mode access
+ power inline never
  spanning-tree portfast
 !
- --More--         interface FastEthernet0/6
- --More--          switchport access vlan 20
+interface FastEthernet0/6
+ description DAZ_EKS kab-2-104
+ switchport access vlan 33
  switchport mode access
- shutdown
+ power inline never
  spanning-tree portfast
 !
 interface FastEthernet0/7
- switchport access vlan 20
+ description DAZ_EKS kab-2-208
+ switchport access vlan 33
  switchport mode access
- spanning-tree portfast
-!
+ power inline never
+ --More--          spanning-tree portfast
+ --More--         !
 interface FastEthernet0/8
  switchport access vlan 20
  switchport mode access
  shutdown
+ power inline never
  spanning-tree portfast
 !
 interface FastEthernet0/9
  switchport access vlan 20
  switchport mode access
+ shutdown
+ power inline never
  spanning-tree portfast
 !
 interface FastEthernet0/10
  switchport access vlan 20
- --More--          switchport mode access
- --More--          spanning-tree portfast
+ switchport mode access
+ shutdown
+ power inline never
+ spanning-tree portfast
 !
 interface FastEthernet0/11
- switchport access vlan 20
- switchport mode access
+ --More--          switchport access vlan 20
+ --More--          switchport mode access
+ shutdown
+ power inline never
  spanning-tree portfast
 !
 interface FastEthernet0/12
- switchport access vlan 20
+ description Aliyev kab2-205
+ switchport access vlan 33
  switchport mode access
- shutdown
+ power inline never
  spanning-tree portfast
 !
 interface FastEthernet0/13
- description kab2-422
  switchport access vlan 20
  switchport mode access
+ power inline never
  spanning-tree portfast
 !
 interface FastEthernet0/14
- switchport access vlan 20
+ description PEO
+ switchport access vlan 33
  switchport mode access
- shutdown
+ power inline never
  --More--          spanning-tree portfast
  --More--         !
 interface FastEthernet0/15
- switchport access vlan 20
+ description DAZ_EKS
+ switchport access vlan 33
  switchport mode access
+ power inline never
  spanning-tree portfast
 !
 interface FastEthernet0/16
- switchport access vlan 20
+ description tuktibaev
+ switchport access vlan 33
  switchport mode access
- shutdown
+ power inline never
  spanning-tree portfast
 !
 interface FastEthernet0/17
- switchport access vlan 20
+ description DAZ_EKS-Server1c-DAZ
+ switchport access vlan 33
  switchport mode access
+ power inline never
  spanning-tree portfast
 !
 interface FastEthernet0/18
- switchport access vlan 20
+ --More--          description DAZ_EKS
+ --More--          switchport access vlan 33
  switchport mode access
- shutdown
+ power inline never
  spanning-tree portfast
 !
- --More--         interface FastEthernet0/19
- --More--          switchport access vlan 20
+interface FastEthernet0/19
+ description DAZ_EKS
+ switchport access vlan 33
  switchport mode access
- shutdown
+ power inline never
  spanning-tree portfast
 !
 interface FastEthernet0/20
- switchport access vlan 20
+ description DAZ_EKS
+ switchport access vlan 33
  switchport mode access
- shutdown
+ power inline never
  spanning-tree portfast
 !
 interface FastEthernet0/21
- switchport access vlan 20
+ description DAZ_EKS
+ switchport access vlan 33
  switchport mode access
- shutdown
- spanning-tree portfast
+ --More--          power inline never
+ --More--          spanning-tree portfast
 !
 interface FastEthernet0/22
- switchport access vlan 20
+ description DAZ_EKS
+ switchport access vlan 33
  switchport mode access
- shutdown
+ power inline never
  spanning-tree portfast
 !
- --More--         interface FastEthernet0/23
- --More--          switchport access vlan 20
+interface FastEthernet0/23
+ switchport access vlan 33
  switchport mode access
+ shutdown
+ power inline never
  spanning-tree portfast
 !
 interface FastEthernet0/24
- switchport access vlan 20
+ switchport access vlan 33
  switchport mode access
  shutdown
+ power inline never
  spanning-tree portfast
 !
-interface FastEthernet0/25
- description kab-2-404
- switchport access vlan 20
+ --More--         interface FastEthernet0/25
+ --More--          description DAZ_EKS
+ switchport access vlan 33
  switchport mode access
+ power inline never
  spanning-tree portfast
 !
 interface FastEthernet0/26
- switchport access vlan 20
+ description DAZ_EKS
+ switchport access vlan 33
  switchport mode access
- shutdown
+ power inline never
  spanning-tree portfast
 !
 interface FastEthernet0/27
- --More--          switchport access vlan 20
- --More--          switchport mode access
+ description DAZ_EKS
+ switchport access vlan 33
+ switchport mode access
+ power inline never
  spanning-tree portfast
 !
 interface FastEthernet0/28
- switchport access vlan 20
- switchport mode access
- shutdown
+ description kab DAZ_EKS-kab2-110
+ switchport access vlan 33
+ --More--          switchport mode access
+ --More--          power inline never
  spanning-tree portfast
 !
 interface FastEthernet0/29
  switchport access vlan 20
  switchport mode access
  shutdown
+ power inline never
  spanning-tree portfast
 !
 interface FastEthernet0/30
- switchport access vlan 20
+ description Priemnaya
+ switchport access vlan 33
  switchport mode access
- shutdown
+ switchport port-security
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ switchport port-security mac-address sticky e03f.4914.0676
+ power inline never
  spanning-tree portfast
 !
 interface FastEthernet0/31
- switchport mode access
+ switchport access vlan 20
+ --More--          switchport mode access
  --More--          shutdown
- --More--          spanning-tree portfast
+ power inline never
+ spanning-tree portfast
 !
 interface FastEthernet0/32
  switchport access vlan 20
  switchport mode access
  shutdown
+ power inline never
  spanning-tree portfast
 !
 interface FastEthernet0/33
  switchport access vlan 20
  switchport mode access
  shutdown
+ power inline never
  spanning-tree portfast
 !
 interface FastEthernet0/34
  switchport access vlan 20
  switchport mode access
  shutdown
+ power inline never
+ --More--          spanning-tree portfast
+ --More--         !
+interface FastEthernet0/35
+ description Abdiev_SMED
+ switchport access vlan 33
+ switchport mode access
+ power inline never
  spanning-tree portfast
 !
-interface FastEthernet0/35
- switchport access vlan 20
- switchport mode access
- --More--          shutdown
- --More--          spanning-tree portfast
-!
 interface FastEthernet0/36
- switchport access vlan 20
+ description SOC
+ switchport access vlan 33
  switchport mode access
  shutdown
+ power inline never
  spanning-tree portfast
 !
 interface FastEthernet0/37
- switchport access vlan 20
+ description PR grazhdan BBlok
+ switchport access vlan 33
  switchport mode access
- shutdown
+ power inline never
  spanning-tree portfast
 !
-interface FastEthernet0/38
- switchport access vlan 20
+ --More--         interface FastEthernet0/38
+ --More--          description 2-106kab
+ switchport access vlan 33
  switchport mode access
- shutdown
+ power inline never
  spanning-tree portfast
 !
 interface FastEthernet0/39
  switchport access vlan 20
  switchport mode access
- --More--          shutdown
- --More--          spanning-tree portfast
+ shutdown
+ power inline never
+ spanning-tree portfast
 !
 interface FastEthernet0/40
  switchport access vlan 20
  switchport mode access
  shutdown
+ power inline never
  spanning-tree portfast
 !
 interface FastEthernet0/41
  switchport access vlan 20
  switchport mode access
- shutdown
+ --More--          shutdown
+ power inline never
  spanning-tree portfast
 !
 interface FastEthernet0/42
  switchport access vlan 20
  switchport mode access
  shutdown
+ power inline never
  spanning-tree portfast
 !
 interface FastEthernet0/43
  switchport access vlan 20
  switchport mode access
- --More--          shutdown
- --More--          spanning-tree portfast
+ shutdown
+ power inline never
+ spanning-tree portfast
 !
 interface FastEthernet0/44
  switchport access vlan 20
  switchport mode access
  shutdown
- spanning-tree portfast
-!
+ power inline never
+ --More--          spanning-tree portfast
+ --More--         !
 interface FastEthernet0/45
  switchport access vlan 20
  switchport mode access
  shutdown
+ power inline never
  spanning-tree portfast
 !
 interface FastEthernet0/46
  switchport access vlan 20
  switchport mode access
  shutdown
+ power inline never
  spanning-tree portfast
 !
 interface FastEthernet0/47
  switchport access vlan 20
  switchport mode access
- --More--          shutdown
- --More--          spanning-tree portfast
+ shutdown
+ power inline never
+ spanning-tree portfast
 !
 interface FastEthernet0/48
- switchport access vlan 20
+ --More--          description 2-120
+ --More--          switchport access vlan 33
  switchport mode access
- shutdown
+ power inline never
  spanning-tree portfast
 !
 interface GigabitEthernet0/1
@@ -386,30 +454,22 @@ interface GigabitEthernet0/1
  switchport mode trunk
 !
 interface GigabitEthernet0/2
- switchport trunk encapsulation dot1q
  switchport trunk allowed vlan 1-35,70-77
- switchport mode trunk
+ switchport mode dynamic desirable
 !
 interface GigabitEthernet0/3
- switchport trunk encapsulation dot1q
- switchport trunk allowed vlan 1-35,70-77
- switchport mode trunk
 !
- --More--         interface GigabitEthernet0/4
- switchport trunk encapsulation dot1q
- switchport trunk allowed vlan 1-35,70-79
- switchport mode trunk
+interface GigabitEthernet0/4
 !
 interface Vlan1
  ip address x.x.x.x x.x.x.x
  ip helper-address x.x.x.x
 !
 ip classless
-ip forward-protocol udp bootps
-ip forward-protocol udp bootpc
+ --More--         ip forward-protocol udp bootps
+ --More--         ip forward-protocol udp bootpc
 no ip http server
 ip http secure-server
-!
 !
 kron occurrence daily-backup at 18:05 recurring
  policy-list Backup
@@ -418,90 +478,81 @@ kron policy-list Backup
  cli copy running-config ftp://x.x.x.x 
  cli copy running-config ftp://x.x.x.x 
 !
- --More--         logging facility local3
- --More--         logging x.x.x.x
-!
+logging facility local3
+logging x.x.x.x
 snmp-server community mazhilis RO
 snmp-server community senat RW
 snmp-server enable traps snmp authentication linkdown linkup coldstart warmstart
 snmp-server enable traps stpx root-inconsistency loop-inconsistency
 snmp-server enable traps syslog
-snmp-server enable traps rtr
 snmp-server host x.x.x.x ciscoworks 
 !
-banner motd ^C
-!**********************************************************!
-!                Welcome to the SW 4Floor32               !
-!                Location: DM-B                        !
-!**********************************************************!
+control-plane
+!
+banner motd ^CCC
+ --More--         **********************************************************
+ --More--         *              Welcome to the SW 2Floor-34               *
+*                  Location:seeshat                      *
+**********************************************************
 ^C
 !
 line con 0
  exec-timeout 0 0
- password 7 045E1E1400224D5C0D
+ password 7 02050D480809
  logging synchronous
- terminal-type mon
- history size 100
- --More--         line vty 0 4
- --More--          exec-timeout 5 0
- password 7 110C0C1718110A1E00
+line vty 0 4
+ exec-timeout 5 0
+ password 7 0822455D0A16
  logging synchronous
- terminal-type mon
- history size 100
  transport input ssh
 line vty 5 15
  exec-timeout 5 0
- password 7 000106140B580A140B
+ password 7 094F471A1A0A
  logging synchronous
- terminal-type mon
- history size 100
  transport input ssh
 !
 ntp logging
-ntp clock-period 36028655
+ntp clock-period 36028821
 ntp server x.x.x.x prefer
-end
-
-4Floor32#
-4Floor32# 
-4Floor32# 
-4Floor32# 
-4Floor32# 
-4Floor32# 
-4Floor32# 
-4Floor32# 
-4Floor32# 
-4Floor32# 
-4Floor32#
-4Floor32#
-4Floor32#
-4Floor32#
-4Floor32#
-4Floor32#
-4Floor32#
-4Floor32#
-4Floor32#
-4Floor32#
-4Floor32#
-4Floor32#
-4Floor32#
-4Floor32#
-4Floor32#
-4Floor32#
-4Floor32#sh ver
-Cisco IOS Software, C3560 Software (C3560-IPSERVICESK9-M), Version 12.2(55)SE7, RELEASE SOFTWARE (fc1)
+ --More--         end
+ --More--         
+base14#
+base14# 
+base14# 
+base14# 
+base14# 
+base14# 
+base14# 
+base14#
+base14#
+base14#
+base14#
+base14#
+base14#
+base14#
+base14#
+base14#
+base14#
+base14#
+base14#
+base14#
+base14#
+base14#
+base14#
+base14#sh ver
+Cisco IOS Software, C3560 Software (C3560-IPBASEK9-M), Version 12.2(50)SE5, RELEASE SOFTWARE (fc1)
 Technical Support: http://www.cisco.com/techsupport
-Copyright (c) 1986-2013 by Cisco Systems, Inc.
-Compiled Mon 28-Jan-13 10:10 by prod_rel_team
-Image text-base: 0x01000000, data-base: 0x02F00000
+Copyright (c) 1986-2010 by Cisco Systems, Inc.
+Compiled Tue 28-Sep-10 13:21 by prod_rel_team
+Image text-base: 0x01000000, data-base: 0x02900000
 
 ROM: Bootstrap program is C3560 boot loader
-BOOTLDR: C3560 Boot Loader (C3560-HBOOT-M) Version 12.2(44)SE5, RELEASE SOFTWARE (fc1)
+BOOTLDR: C3560 Boot Loader (C3560-HBOOT-M) Version 12.2(53r)SEY4, RELEASE SOFTWARE (fc1)
 
-4Floor32 uptime is 1 year, 26 weeks, 3 days, 1 hour, 5 minutes
+base14 uptime is 3 years, 20 weeks, 5 days, 22 hours, 48 minutes
 System returned to ROM by power-on
-System restarted at 16:06:49 Astana Fri Apr 9 2021
-System image file is "flash:c3560-ipservicesk9-mz.122-55.SE7.bin"
+System restarted at 18:15:01 Astana Sun May 19 2019
+System image file is "flash:/c3560-ipbasek9-mz.122-50.SE5/c3560-ipbasek9-mz.122-50.SE5.bin"
 
 
 This product contains cryptographic features and is subject to United
@@ -509,8 +560,8 @@ States and local country laws governing import, export, transfer and
 use. Delivery of Cisco cryptographic products does not imply
 third-party authority to import, export, distribute or use encryption.
 Importers, exporters, distributors and users are responsible for
-compliance with U.S. and local country laws. By using this product you
- --More--         agree to comply with applicable laws and regulations. If you are unable
+ --More--         compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
 to comply with U.S. and local laws, return this product immediately.
 
 A summary of U.S. laws governing Cisco cryptographic products may be found at:
@@ -519,8 +570,8 @@ http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
 If you require further assistance please contact us by sending email to
 export@cisco.com.
 
-cisco WS-C3560-48TS (PowerPC405) processor (revision E0) with 131072K bytes of memory.
-Processor board ID FDO1136X0ST
+cisco WS-C3560V2-48PS (PowerPC405) processor (revision L0) with 131072K bytes of memory.
+Processor board ID FDO1523X16D
 Last reset from power-on
 1 Virtual Ethernet interface
 48 FastEthernet interfaces
@@ -528,58 +579,55 @@ Last reset from power-on
 The password-recovery mechanism is enabled.
 
 512K bytes of flash-simulated non-volatile configuration memory.
-Base ethernet MAC Address       : 00:1D:A2:47:FC:00
-Motherboard assembly number     : 73-9898-06
-Power supply part number        : 341-0097-02
-Motherboard serial number       : FDO113600S1
- --More--         Power supply serial number      : AZS112603R1
- --More--         Model revision number           : E0
-Motherboard revision number     : B0
-Model number                    : WS-C3560-48TS-S
-System serial number            : FDO1136X0ST
-SFP Module assembly part number : 73-7757-03
-SFP Module revision Number      : A0
-SFP Module serial number        : FDO11340E6T
-Top Assembly Part Number        : 800-26162-02
-Top Assembly Revision Number    : E0
-Version ID                      : V02
-CLEI Code Number                : COMMJ00ARB
-Hardware Board Revision Number  : 0x01
+Base ethernet MAC Address       : D0:C2:82:3D:1D:80
+Motherboard assembly number     : 73-12630-01
+Power supply part number        : 341-0266-03
+ --More--         Motherboard serial number       : FDO15240F3U
+ --More--         Power supply serial number      : DCA1518H1FG
+Model revision number           : L0
+Motherboard revision number     : C0
+Model number                    : WS-C3560V2-48PS-S
+System serial number            : FDO1523X16D
+Top Assembly Part Number        : 800-33161-02
+Top Assembly Revision Number    : A0
+Version ID                      : V07
+CLEI Code Number                : COMMEB00BRA
+Hardware Board Revision Number  : 0x02
 
 
 Switch Ports Model              SW Version            SW Image                 
 ------ ----- -----              ----------            ----------               
-*    1 52    WS-C3560-48TS      12.2(55)SE7           C3560-IPSERVICESK9-M     
+*    1 52    WS-C3560V2-48PS    12.2(50)SE5           C3560-IPBASEK9-M         
 
 
 Configuration register is 0xF
 
-4Floor32#
-4Floor32# 
-4Floor32# 
-4Floor32# 
-4Floor32# 
-4Floor32# 
-4Floor32# 
-4Floor32#
-4Floor32#sh inv
-NAME: "1", DESCR: "WS-C3560-48TS"
-PID: WS-C3560-48TS-S   , VID: V02  , SN: FDO1136X0ST
+base14#
+base14# 
+base14# 
+base14# 
+base14# 
+base14# 
+base14# 
+base14#
+base14#sh inv
+NAME: "1", DESCR: "WS-C3560V2-48PS"
+PID: WS-C3560V2-48PS-S , VID: V07, SN: FDO1523X16D
 
 NAME: "GigabitEthernet0/1", DESCR: "1000BaseSX SFP"
-PID: Unspecified       , VID:      , SN: AGA1514L3V5     
+PID:                     , VID:     , SN: AGA1514L20T     
 
 
-4Floor32# 
-4Floor32# 
-4Floor32# 
-4Floor32# 
-4Floor32# 
-4Floor32# 
-4Floor32# 
-4Floor32#
-4Floor32#
-4Floor32#sh span
+base14# 
+base14# 
+base14# 
+base14# 
+base14# 
+base14# 
+base14# 
+base14#
+base14#
+base14#sh span
 
 VLAN0001
   Spanning tree enabled protocol ieee
@@ -590,7 +638,7 @@ VLAN0001
              Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
 
   Bridge ID  Priority    32769  (priority 32768 sys-id-ext 1)
-             Address     001d.a247.fc00
+             Address     d0c2.823d.1d80
              Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
              Aging Time  300 sec
 
@@ -609,7 +657,7 @@ VLAN0002
              Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
 
   Bridge ID  Priority    32770  (priority 32768 sys-id-ext 2)
-             Address     001d.a247.fc00
+             Address     d0c2.823d.1d80
              Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
              Aging Time  300 sec
 
@@ -628,7 +676,7 @@ Gi0/1               Root FWD 4         128.1    P2p
              Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
 
   Bridge ID  Priority    32771  (priority 32768 sys-id-ext 3)
-             Address     001d.a247.fc00
+             Address     d0c2.823d.1d80
              Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
              Aging Time  300 sec
 
@@ -647,7 +695,7 @@ VLAN0004
              Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
 
   Bridge ID  Priority    32772  (priority 32768 sys-id-ext 4)
-             Address     001d.a247.fc00
+             Address     d0c2.823d.1d80
              Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
              Aging Time  300 sec
 
@@ -666,7 +714,7 @@ Gi0/1               Root FWD 4         128.1    P2p
              Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
 
   Bridge ID  Priority    32773  (priority 32768 sys-id-ext 5)
-             Address     001d.a247.fc00
+             Address     d0c2.823d.1d80
              Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
              Aging Time  300 sec
 
@@ -685,7 +733,7 @@ Gi0/1               Root FWD 4         128.1    P2p
              Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
 
   Bridge ID  Priority    32774  (priority 32768 sys-id-ext 6)
-             Address     001d.a247.fc00
+             Address     d0c2.823d.1d80
              Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
              Aging Time  300 sec
 
@@ -704,22 +752,15 @@ Gi0/1               Root FWD 4         128.1    P2p
              Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
 
   Bridge ID  Priority    32788  (priority 32768 sys-id-ext 20)
-             Address     001d.a247.fc00
+             Address     d0c2.823d.1d80
              Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
              Aging Time  300 sec
 
 Interface           Role Sts Cost      Prio.Nbr Type
 ------------------- ---- --- --------- -------- --------------------------------
 Gi0/1               Root FWD 4         128.1    P2p 
-Fa0/1               Desg FWD 100       128.3    P2p Edge 
-Fa0/3               Desg FWD 19        128.5    P2p Edge 
-Fa0/5               Desg FWD 19        128.7    P2p Edge 
-Fa0/7               Desg FWD 19        128.9    P2p Edge 
-Fa0/10              Desg FWD 19        128.12   P2p Edge 
 Fa0/13              Desg FWD 19        128.15   P2p Edge 
-Fa0/17              Desg FWD 100       128.19   P2p Edge 
- --More--         Fa0/25              Desg FWD 19        128.29   P2p Edge 
- --More--         
+
 
  --More--         
  --More--         VLAN0031
@@ -731,7 +772,7 @@ Fa0/17              Desg FWD 100       128.19   P2p Edge
              Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
 
   Bridge ID  Priority    32799  (priority 32768 sys-id-ext 31)
-             Address     001d.a247.fc00
+             Address     d0c2.823d.1d80
              Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
              Aging Time  300 sec
 
@@ -750,7 +791,7 @@ Gi0/1               Root FWD 4         128.1    P2p
              Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
 
   Bridge ID  Priority    32800  (priority 32768 sys-id-ext 32)
-             Address     001d.a247.fc00
+             Address     d0c2.823d.1d80
              Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
              Aging Time  300 sec
 
@@ -769,13 +810,32 @@ Gi0/1               Root FWD 4         128.1    P2p
              Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
 
   Bridge ID  Priority    32801  (priority 32768 sys-id-ext 33)
-             Address     001d.a247.fc00
+             Address     d0c2.823d.1d80
              Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
              Aging Time  300 sec
 
 Interface           Role Sts Cost      Prio.Nbr Type
 ------------------- ---- --- --------- -------- --------------------------------
 Gi0/1               Root FWD 4         128.1    P2p 
+Fa0/1               Desg FWD 19        128.3    P2p Edge 
+Fa0/2               Desg FWD 19        128.4    P2p Edge 
+Fa0/5               Desg FWD 19        128.7    P2p Edge 
+Fa0/15              Desg FWD 19        128.17   P2p Edge 
+Fa0/16              Desg FWD 19        128.18   P2p Edge 
+Fa0/17              Desg FWD 19        128.19   P2p Edge 
+Fa0/18              Desg FWD 19        128.20   P2p Edge 
+ --More--         Fa0/19              Desg FWD 19        128.21   P2p Edge 
+ --More--         
+Interface           Role Sts Cost      Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+
+Fa0/21              Desg FWD 19        128.23   P2p Edge 
+Fa0/22              Desg FWD 100       128.24   P2p Edge 
+Fa0/27              Desg FWD 100       128.31   P2p Edge 
+Fa0/30              Desg FWD 19        128.34   P2p Edge 
+Fa0/35              Desg FWD 19        128.39   P2p Edge 
+Fa0/37              Desg FWD 19        128.41   P2p Edge 
+Fa0/38              Desg FWD 19        128.42   P2p Edge 
 
 
  --More--         
@@ -788,7 +848,7 @@ Gi0/1               Root FWD 4         128.1    P2p
              Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
 
   Bridge ID  Priority    32841  (priority 32768 sys-id-ext 73)
-             Address     001d.a247.fc00
+             Address     d0c2.823d.1d80
              Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
              Aging Time  300 sec
 
@@ -807,7 +867,7 @@ Gi0/1               Root FWD 4         128.1    P2p
              Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
 
   Bridge ID  Priority    32842  (priority 32768 sys-id-ext 74)
-             Address     001d.a247.fc00
+             Address     d0c2.823d.1d80
              Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
              Aging Time  300 sec
 
@@ -826,7 +886,7 @@ VLAN0075
              Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
 
   Bridge ID  Priority    32843  (priority 32768 sys-id-ext 75)
-             Address     001d.a247.fc00
+             Address     d0c2.823d.1d80
              Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
              Aging Time  300 sec
 
@@ -845,7 +905,7 @@ Gi0/1               Root FWD 4         128.1    P2p
              Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
 
   Bridge ID  Priority    32845  (priority 32768 sys-id-ext 77)
-             Address     001d.a247.fc00
+             Address     d0c2.823d.1d80
              Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
              Aging Time  300 sec
 
@@ -854,25 +914,29 @@ Interface           Role Sts Cost      Prio.Nbr Type
 Gi0/1               Root FWD 4         128.1    P2p 
 
 
-4Floor32# 
-4Floor32# 
-4Floor32# 
-4Floor32# 
-4Floor32# 
-4Floor32#
-4Floor32#
-4Floor32#sh env all 
+base14# 
+base14# 
+base14# 
+base14# 
+base14# 
+base14#
+base14#
+base14#sh env all 
 FAN is OK
 TEMPERATURE is OK
+Temperature Value: 44 Degree Celsius
+Temperature State: GREEN
+Yellow Threshold : 66 Degree Celsius
+Red Threshold    : 76 Degree Celsius
 SW  PID                 Serial#     Status           Sys Pwr  PoE Pwr  Watts
 --  ------------------  ----------  ---------------  -------  -------  -----
  1  Built-in                                         Good
 
 SW  Status          RPS Name          RPS Serial#  RPS Port#
 --  -------------   ----------------  -----------  ---------
-1   Not Present     <>
+1   <>              <>
 
-4Floor32# 
-4Floor32# 
-4Floor32# 
-4Floor32# q
+base14# 
+base14# 
+base14# 
+base14# q
