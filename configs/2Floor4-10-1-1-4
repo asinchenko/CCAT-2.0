@@ -1,0 +1,903 @@
+=~=~=~=~=~=~=~=~=~=~=~= PuTTY log 2022.10.11 17:03:35 =~=~=~=~=~=~=~=~=~=~=~=
+login as: cisco
+cisco@x.x.x.x's password: 
+
+!*****************************!
+!  Welcome Switch 2Floor4     ! 
+!      Location: Senat        !
+!*****************************!
+2Floor4>em n
+Password: 
+2Floor4#
+2Floor4#sh run
+Building configuration...
+
+Current configuration : 9455 bytes
+!
+! No configuration change since last restart
+!
+version 12.2
+no service pad
+service timestamps debug datetime localtime
+service timestamps log datetime localtime
+service password-encryption
+service sequence-numbers
+!
+hostname 2Floor4
+!
+enable password 7 045802150C2E
+!
+username cisco password 7 13061E010803
+aaa new-model
+!
+!
+aaa accounting system default stop-only group tacacs+
+!
+!
+ --More--         !
+aaa session-id common
+clock timezone Astana 6
+mls qos
+ip subnet-zero
+ip domain-name parlam.kz
+ip name-server x.x.x.x
+!
+login on-failure log
+login on-success log
+!
+!
+crypto pki trustpoint HTTPS_SS_CERT_KEYPAIR
+ enrollment selfsigned
+ serial-number
+ revocation-check none
+ rsakeypair HTTPS_SS_CERT_KEYPAIR
+!
+!
+crypto pki certificate chain HTTPS_SS_CERT_KEYPAIR
+ certificate self-signed 01
+  30820285 308201EE A0030201 02020101 300D0609 2A864886 F70D0101 04050030 
+  4F311A30 18060355 04031311 32466C6F 6F72342E 7061726C 616D2E6B 7A313130 
+ --More--           0F060355 04051308 39344333 45313030 301E0609 2A864886 F70D0109 02161132 
+ --More--           466C6F6F 72342E70 61726C61 6D2E6B7A 301E170D 31333035 30383038 35353533 
+  5A170D32 30303130 31303030 3030305A 304F311A 30180603 55040313 1132466C 
+  6F6F7234 2E706172 6C616D2E 6B7A3131 300F0603 55040513 08393443 33453130 
+  30301E06 092A8648 86F70D01 09021611 32466C6F 6F72342E 7061726C 616D2E6B 
+  7A30819F 300D0609 2A864886 F70D0101 01050003 818D0030 81890281 8100BB5C 
+  26E3A64C 90F74372 F3659E35 0975DBAE 6428F9E3 493A5D8A 76C95857 7FF9064B 
+  3EA50D0F 43604533 7833402D 3695F92E 2124D78A 027B527E B01516AD 51CD01E0 
+  C7958AA5 4D18E265 A435803C 6E49872D 620668A4 8F9AB1C3 368E8E21 EA5C80E2 
+  F52DC16D 26DB7747 46E201CB 0E72A183 B0D96687 4D4CE3CA 633AF97B F27D0203 
+  010001A3 71306F30 0F060355 1D130101 FF040530 030101FF 301C0603 551D1104 
+  15301382 1132466C 6F6F7234 2E706172 6C616D2E 6B7A301F 0603551D 23041830 
+  168014DE 04E82807 D1519F65 91355928 4C53FA8E FF5B0E30 1D060355 1D0E0416 
+  0414DE04 E82807D1 519F6591 3559284C 53FA8EFF 5B0E300D 06092A86 4886F70D 
+  01010405 00038181 00913901 6A2610FE 8584B71C 96DE5C2E F42A36B2 93E5C34C 
+  78557625 3E56A7B0 B8235D08 9621A991 815C8E3B E61E1015 DB96ECEF 8B9AB7A6 
+  56248B28 2A25173B 0908AFC8 C0B9A918 CA253E28 9CA6E6BF AB7C4C1E AFB3485E 
+  D56A4252 2874BC96 C4A84C23 161A8757 4664C54F 7C11727E ADB55303 E0C3A7BD 
+  33156583 3790E48C A2
+  quit
+!
+!
+archive
+ log config
+ --More--           logging enable
+ --More--           logging size 200
+  notify syslog contenttype plaintext
+  hidekeys
+ path ftp://x.x.x.x/$h-$t
+ write-memory
+spanning-tree mode pvst
+spanning-tree logging
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+ip ftp username ftp-user
+ip ftp password 7 097C4F1A0A1247000F
+ip ssh logging events
+ip ssh version 2
+no ip rcmd domain-lookup
+ip rcmd rcp-enable
+ip rcmd rsh-enable
+ip rcmd remote-host cwuser x.x.x.x cwuser enable
+!
+! 
+!
+!
+ --More--         !
+ --More--         interface FastEthernet0/1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1-35,70-77
+ switchport mode trunk
+ speed 100
+ duplex full
+!
+interface FastEthernet0/2
+ switchport access vlan 222
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/3
+ switchport access vlan 20
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/4
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/5
+ description BUH_IC
+ --More--          switchport access vlan 73
+ --More--          switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/6
+ switchport mode access
+ speed 100
+ duplex full
+ spanning-tree portfast
+!
+interface FastEthernet0/7
+ switchport mode access
+ mls qos trust device cisco-phone
+ mls qos trust dscp
+ spanning-tree portfast
+!
+interface FastEthernet0/8
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/9
+ switchport mode access
+ spanning-tree portfast
+!
+ --More--         interface FastEthernet0/10
+ --More--          switchport access vlan 6
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/11
+ switchport access vlan 6
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/12
+ switchport access vlan 6
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/13
+ switchport access vlan 6
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/14
+ switchport access vlan 2
+ switchport mode access
+ spanning-tree portfast
+ --More--         !
+ --More--         interface FastEthernet0/15
+ switchport access vlan 2
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/16
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/17
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 50,75,4000
+ switchport mode trunk
+ switchport nonegotiate
+!
+interface FastEthernet0/18
+ description to srx220 ge0/0/4
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 50,75,222
+ switchport mode trunk
+ switchport nonegotiate
+!
+interface FastEthernet0/19
+ --More--          switchport access vlan 3
+ --More--          switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/20
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/21
+ switchport access vlan 4
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/22
+ switchport access vlan 4
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/23
+ switchport access vlan 20
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/24
+ --More--          switchport access vlan 6
+ --More--          switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/25
+ switchport access vlan 6
+ switchport mode access
+ speed 100
+ duplex full
+ spanning-tree portfast
+!
+interface FastEthernet0/26
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/27
+ switchport mode access
+ speed 100
+ duplex full
+ spanning-tree portfast
+!
+interface FastEthernet0/28
+ switchport access vlan 6
+ switchport mode access
+ --More--          mls qos trust device cisco-phone
+ --More--          mls qos trust dscp
+ spanning-tree portfast
+!
+interface FastEthernet0/29
+ switchport mode access
+ duplex full
+ spanning-tree portfast
+!
+interface FastEthernet0/30
+ switchport mode access
+!
+interface FastEthernet0/31
+ switchport access vlan 78
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/32
+ switchport access vlan 6
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/33
+ switchport access vlan 2
+ --More--          switchport mode access
+ --More--          speed 100
+ duplex full
+ spanning-tree portfast
+!
+interface FastEthernet0/34
+ switchport access vlan 2
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/35
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/36
+ switchport access vlan 6
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/37
+ switchport access vlan 6
+ switchport mode access
+ spanning-tree portfast
+!
+ --More--         interface FastEthernet0/38
+ --More--          switchport access vlan 6
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/39
+ switchport access vlan 6
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/40
+ switchport access vlan 6
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/41
+ switchport access vlan 20
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/42
+ switchport access vlan 33
+ switchport mode access
+ spanning-tree portfast
+ --More--         !
+ --More--         interface FastEthernet0/43
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/44
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/45
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/46
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/47
+ switchport access vlan 77
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/48
+ switchport access vlan 6
+ --More--          switchport mode access
+ --More--          spanning-tree portfast
+!
+interface GigabitEthernet0/1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport nonegotiate
+!
+interface GigabitEthernet0/2
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 1-35,70-77
+ switchport mode trunk
+!
+interface Vlan1
+ ip address x.x.x.x x.x.x.x
+ ip helper-address x.x.x.x
+!
+interface Vlan9
+ no ip address
+!
+ip classless
+ip forward-protocol udp bootps
+ip forward-protocol udp bootpc
+no ip http server
+ --More--         ip http secure-server
+ --More--         !
+!
+kron occurrence daily-backup at 18:05 recurring
+ policy-list Backup
+!
+kron policy-list Backup
+ cli copy running-config ftp://x.x.x.x 
+ cli copy running-config ftp://x.x.x.x 
+!
+logging facility local3
+logging x.x.x.x
+snmp-server community mazhilis RO
+snmp-server community senat RW
+snmp-server enable traps snmp authentication linkdown linkup coldstart warmstart
+snmp-server enable traps stpx root-inconsistency loop-inconsistency
+snmp-server enable traps syslog
+snmp-server enable traps rtr
+snmp-server host x.x.x.x ciscoworks 
+!
+control-plane
+!
+banner motd ^C
+!*****************************!
+ --More--         !  Welcome Switch 2Floor4     ! 
+!      Location: Senat        !
+!*****************************!^C
+!
+line con 0
+ exec-timeout 0 0
+ password 7 000106140B580A140B
+ logging synchronous
+ terminal-type mon
+ history size 100
+line vty 0 4
+ exec-timeout 60 0
+ logging synchronous
+ terminal-type mon
+ history size 100
+ transport input ssh
+line vty 5 15
+ exec-timeout 0 0
+ logging synchronous
+ terminal-type mon
+ history size 100
+ transport input none
+!
+ --More--         !
+ --More--         monitor session 2 destination interface Fa0/2
+monitor session 2 source remote vlan 31 
+ntp logging
+ntp clock-period 17180162
+ntp server x.x.x.x prefer
+ntp server x.x.x.x prefer
+end
+
+2Floor4#
+2Floor4# 
+2Floor4# 
+2Floor4# 
+2Floor4# 
+2Floor4# 
+2Floor4# 
+2Floor4# 
+2Floor4# 
+2Floor4# 
+2Floor4# 
+2Floor4#
+2Floor4#
+2Floor4#
+2Floor4#
+2Floor4#
+2Floor4#
+2Floor4#
+2Floor4#
+2Floor4#
+2Floor4#
+2Floor4#
+2Floor4#
+2Floor4#
+2Floor4#
+2Floor4#
+2Floor4#
+2Floor4#sh ver
+Cisco IOS Software, C3550 Software (C3550-IPSERVICESK9-M), Version 12.2(44)SE6, RELEASE SOFTWARE (fc1)
+Copyright (c) 1986-2009 by Cisco Systems, Inc.
+Compiled Mon 09-Mar-09 20:28 by gereddy
+Image text-base: 0x00003000, data-base: 0x012A99FC
+
+ROM: Bootstrap program is C3550 boot loader
+
+2Floor4 uptime is 7 weeks, 2 days, 7 hours, 20 minutes
+System returned to ROM by power-on
+System restarted at 09:42:00 Astana Sun Aug 21 2022
+System image file is "flash:c3550-ipbase-mz.122-25.SEB4/c3550-ipservicesk9-mz.122-44.SE6.bin"
+
+
+This product contains cryptographic features and is subject to United
+States and local country laws governing import, export, transfer and
+use. Delivery of Cisco cryptographic products does not imply
+third-party authority to import, export, distribute or use encryption.
+Importers, exporters, distributors and users are responsible for
+compliance with U.S. and local country laws. By using this product you
+agree to comply with applicable laws and regulations. If you are unable
+to comply with U.S. and local laws, return this product immediately.
+ --More--         
+A summary of U.S. laws governing Cisco cryptographic products may be found at:
+http://www.cisco.com/wwl/export/crypto/tool/stqrg.html
+
+If you require further assistance please contact us by sending email to
+export@cisco.com.
+
+Cisco WS-C3550-48 (PowerPC) processor (revision S0) with 65526K/8192K bytes of memory.
+Processor board ID CAT1014Z08S
+Last reset from warm-reset
+Running Layer2/3 Switching Image
+
+Ethernet-controller 1 has 12 Fast Ethernet/IEEE 802.3 interfaces
+
+Ethernet-controller 2 has 12 Fast Ethernet/IEEE 802.3 interfaces
+
+Ethernet-controller 3 has 12 Fast Ethernet/IEEE 802.3 interfaces
+
+Ethernet-controller 4 has 12 Fast Ethernet/IEEE 802.3 interfaces
+
+Ethernet-controller 5 has 1 Gigabit Ethernet/IEEE 802.3 interface
+
+ --More--         Ethernet-controller 6 has 1 Gigabit Ethernet/IEEE 802.3 interface
+ --More--         
+48 FastEthernet interfaces
+2 Gigabit Ethernet interfaces
+
+The password-recovery mechanism is enabled.
+384K bytes of flash-simulated NVRAM.
+Base ethernet MAC Address: 00:17:94:C3:E1:00
+Motherboard assembly number: 73-5701-10
+Power supply part number: 34-0967-03
+Motherboard serial number: CAT1013136G
+Power supply serial number: LIT10060DYX
+Model revision number: S0
+Motherboard revision number: A0
+Model number: WS-C3550-48-SMI
+System serial number: CAT1014Z08S
+Configuration register is 0x10F
+
+2Floor4#
+2Floor4# 
+2Floor4# 
+2Floor4# 
+2Floor4# 
+2Floor4# 
+2Floor4# 
+2Floor4#
+2Floor4#sh inv
+NAME: "2Floor4", DESCR: "Cisco Catalyst 3550 48 10/100 baseT ports + 2 Gig uplinks fixed configuration Layer 2/3 Ethernet Switch"
+PID: WS-C3550-48-SMI   , VID: S0 , SN: CAT1014Z08S
+
+NAME: "GigabitEthernet0/1 port adapter", DESCR: "shortwave fibre gigabit ethernet port adapter"
+PID: GBIC_SX           , VID: 314 7488 231 6808, SN: AGS09200N9P     
+
+NAME: "GigabitEthernet0/2 port adapter", DESCR: "shortwave fibre gigabit ethernet port adapter"
+PID: GBIC_SX           , VID: 1E0 16C4 8000 87C, SN: AGM1133A069     
+
+
+2Floor4# 
+2Floor4# 
+2Floor4# 
+2Floor4# 
+2Floor4# 
+2Floor4# 
+2Floor4# 
+2Floor4#
+2Floor4#
+2Floor4#sh span
+
+VLAN0001
+  Spanning tree enabled protocol ieee
+  Root ID    Priority    32769
+             Address     0017.94c3.e100
+             This bridge is the root
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+
+  Bridge ID  Priority    32769  (priority 32768 sys-id-ext 1)
+             Address     0017.94c3.e100
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+             Aging Time 300
+
+Interface           Role Sts Cost      Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Gi0/1               Desg FWD 4         128.49   P2p 
+
+ --More--         
+VLAN0002
+  Spanning tree enabled protocol ieee
+  Root ID    Priority    32770
+             Address     0017.94c3.e100
+             This bridge is the root
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+
+  Bridge ID  Priority    32770  (priority 32768 sys-id-ext 2)
+             Address     0017.94c3.e100
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+             Aging Time 300
+
+Interface           Role Sts Cost      Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Gi0/1               Desg FWD 4         128.49   P2p 
+
+ --More--         
+ --More--         VLAN0003
+ --More--           Spanning tree enabled protocol ieee
+  Root ID    Priority    32771
+             Address     0017.94c3.e100
+             This bridge is the root
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+
+  Bridge ID  Priority    32771  (priority 32768 sys-id-ext 3)
+             Address     0017.94c3.e100
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+             Aging Time 300
+
+Interface           Role Sts Cost      Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Gi0/1               Desg FWD 4         128.49   P2p 
+
+ --More--         
+VLAN0004
+  Spanning tree enabled protocol ieee
+  Root ID    Priority    32772
+             Address     0017.94c3.e100
+             This bridge is the root
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+
+  Bridge ID  Priority    32772  (priority 32768 sys-id-ext 4)
+             Address     0017.94c3.e100
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+             Aging Time 300
+
+Interface           Role Sts Cost      Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Gi0/1               Desg FWD 4         128.49   P2p 
+
+ --More--         
+ --More--         VLAN0005
+  Spanning tree enabled protocol ieee
+  Root ID    Priority    32773
+             Address     0017.94c3.e100
+             This bridge is the root
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+
+  Bridge ID  Priority    32773  (priority 32768 sys-id-ext 5)
+             Address     0017.94c3.e100
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+             Aging Time 300
+
+Interface           Role Sts Cost      Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Gi0/1               Desg FWD 4         128.49   P2p 
+
+ --More--         
+ --More--         VLAN0006
+ --More--           Spanning tree enabled protocol ieee
+  Root ID    Priority    32774
+             Address     0017.94c3.e100
+             This bridge is the root
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+
+  Bridge ID  Priority    32774  (priority 32768 sys-id-ext 6)
+             Address     0017.94c3.e100
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+             Aging Time 300
+
+Interface           Role Sts Cost      Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Gi0/1               Desg FWD 4         128.49   P2p 
+
+ --More--         
+ --More--         VLAN0020
+  Spanning tree enabled protocol ieee
+  Root ID    Priority    32788
+             Address     0017.94c3.e100
+             This bridge is the root
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+
+  Bridge ID  Priority    32788  (priority 32768 sys-id-ext 20)
+             Address     0017.94c3.e100
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+             Aging Time 300
+
+Interface           Role Sts Cost      Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Gi0/1               Desg FWD 4         128.49   P2p 
+
+ --More--         
+ --More--         VLAN0031
+  Spanning tree enabled protocol ieee
+  Root ID    Priority    32799
+             Address     0017.94c3.e100
+             This bridge is the root
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+
+  Bridge ID  Priority    32799  (priority 32768 sys-id-ext 31)
+             Address     0017.94c3.e100
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+             Aging Time 300
+
+Interface           Role Sts Cost      Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Gi0/1               Desg FWD 4         128.49   P2p 
+
+ --More--         
+ --More--         VLAN0032
+  Spanning tree enabled protocol ieee
+  Root ID    Priority    32800
+             Address     0017.94c3.e100
+             This bridge is the root
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+
+  Bridge ID  Priority    32800  (priority 32768 sys-id-ext 32)
+             Address     0017.94c3.e100
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+             Aging Time 300
+
+Interface           Role Sts Cost      Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Gi0/1               Desg FWD 4         128.49   P2p 
+
+ --More--         
+ --More--         VLAN0033
+  Spanning tree enabled protocol ieee
+  Root ID    Priority    32801
+             Address     0017.94c3.e100
+             This bridge is the root
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+
+  Bridge ID  Priority    32801  (priority 32768 sys-id-ext 33)
+             Address     0017.94c3.e100
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+             Aging Time 300
+
+Interface           Role Sts Cost      Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Gi0/1               Desg FWD 4         128.49   P2p 
+
+ --More--         
+ --More--         VLAN0050
+  Spanning tree enabled protocol ieee
+  Root ID    Priority    32818
+             Address     0017.94c3.e100
+             This bridge is the root
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+
+  Bridge ID  Priority    32818  (priority 32768 sys-id-ext 50)
+             Address     0017.94c3.e100
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+             Aging Time 300
+
+Interface           Role Sts Cost      Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Fa0/17              Desg FWD 19        128.17   P2p 
+Fa0/18              Desg FWD 19        128.18   P2p 
+Gi0/1               Desg FWD 4         128.49   P2p 
+
+ --More--         
+ --More--         VLAN0073
+  Spanning tree enabled protocol ieee
+  Root ID    Priority    32841
+             Address     0017.94c3.e100
+             This bridge is the root
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+
+  Bridge ID  Priority    32841  (priority 32768 sys-id-ext 73)
+             Address     0017.94c3.e100
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+             Aging Time 300
+
+Interface           Role Sts Cost      Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Gi0/1               Desg FWD 4         128.49   P2p 
+
+ --More--         
+ --More--         VLAN0074
+  Spanning tree enabled protocol ieee
+  Root ID    Priority    32842
+             Address     0017.94c3.e100
+             This bridge is the root
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+
+  Bridge ID  Priority    32842  (priority 32768 sys-id-ext 74)
+             Address     0017.94c3.e100
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+             Aging Time 300
+
+Interface           Role Sts Cost      Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Gi0/1               Desg FWD 4         128.49   P2p 
+
+ --More--         
+VLAN0075
+  Spanning tree enabled protocol ieee
+  Root ID    Priority    32843
+             Address     0017.94c3.e100
+             This bridge is the root
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+
+  Bridge ID  Priority    32843  (priority 32768 sys-id-ext 75)
+             Address     0017.94c3.e100
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+             Aging Time 300
+
+Interface           Role Sts Cost      Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Fa0/17              Desg FWD 19        128.17   P2p 
+Fa0/18              Desg FWD 19        128.18   P2p 
+Gi0/1               Desg FWD 4         128.49   P2p 
+
+ --More--         
+ --More--         VLAN0077
+  Spanning tree enabled protocol ieee
+  Root ID    Priority    32845
+             Address     0017.94c3.e100
+             This bridge is the root
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+
+  Bridge ID  Priority    32845  (priority 32768 sys-id-ext 77)
+             Address     0017.94c3.e100
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+             Aging Time 300
+
+Interface           Role Sts Cost      Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Gi0/1               Desg FWD 4         128.49   P2p 
+
+ --More--         
+VLAN0078
+  Spanning tree enabled protocol ieee
+  Root ID    Priority    32846
+             Address     0017.94c3.e100
+             This bridge is the root
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+
+  Bridge ID  Priority    32846  (priority 32768 sys-id-ext 78)
+             Address     0017.94c3.e100
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+             Aging Time 300
+
+Interface           Role Sts Cost      Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Gi0/1               Desg FWD 4         128.49   P2p 
+
+ --More--         
+ --More--         VLAN0094
+  Spanning tree enabled protocol ieee
+  Root ID    Priority    32862
+             Address     0017.94c3.e100
+             This bridge is the root
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+
+  Bridge ID  Priority    32862  (priority 32768 sys-id-ext 94)
+             Address     0017.94c3.e100
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+             Aging Time 300
+
+Interface           Role Sts Cost      Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Gi0/1               Desg FWD 4         128.49   P2p 
+
+ --More--         
+ --More--         VLAN0222
+  Spanning tree enabled protocol ieee
+  Root ID    Priority    32990
+             Address     0017.94c3.e100
+             This bridge is the root
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+
+  Bridge ID  Priority    32990  (priority 32768 sys-id-ext 222)
+             Address     0017.94c3.e100
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+             Aging Time 300
+
+Interface           Role Sts Cost      Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Fa0/18              Desg FWD 19        128.18   P2p 
+Gi0/1               Desg FWD 4         128.49   P2p 
+
+ --More--         
+ --More--         VLAN0302
+  Spanning tree enabled protocol ieee
+  Root ID    Priority    33070
+             Address     0017.94c3.e100
+             This bridge is the root
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+
+  Bridge ID  Priority    33070  (priority 32768 sys-id-ext 302)
+             Address     0017.94c3.e100
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+             Aging Time 300
+
+Interface           Role Sts Cost      Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Gi0/1               Desg FWD 4         128.49   P2p 
+
+ --More--         
+ --More--         VLAN0313
+  Spanning tree enabled protocol ieee
+  Root ID    Priority    33081
+             Address     0017.94c3.e100
+             This bridge is the root
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+
+  Bridge ID  Priority    33081  (priority 32768 sys-id-ext 313)
+             Address     0017.94c3.e100
+             Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+             Aging Time 300
+
+Interface           Role Sts Cost      Prio.Nbr Type
+------------------- ---- --- --------- -------- --------------------------------
+Gi0/1               Desg FWD 4         128.49   P2p 
+
+2Floor4#
+2Floor4#
+2Floor4#
+2Floor4#sh env all 
+FAN is OK
+TEMPERATURE is OK
+POWER is OK
+RPS is NOT PRESENT
+
+2Floor4# 
+2Floor4# 
+2Floor4# 
+2Floor4# q
